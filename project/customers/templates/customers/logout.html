@@ -1,0 +1,9 @@
+{% extends "handy/base.html" %}
+{% block content %}
+	<h2>You have logged out</h2>
+	<div>
+		<small> 
+			<a href="{% url 'customer-login' %}">Log In Again</a>
+		</small>
+	</div>
+{% endblock content %}

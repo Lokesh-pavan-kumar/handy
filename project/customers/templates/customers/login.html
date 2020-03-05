@@ -1,0 +1,21 @@
+{% extends "handy/base.html" %}
+{% block content %}
+	<div class="content-section">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend>Log In</legend>
+				{{ form.as_p }}		
+			</fieldset>	
+			<div class="form-group">
+				<button type="submit">Login</button>
+			</div>
+		</form>
+		<div>
+			<small>
+				Do not have an Account?
+				<a href="{% url 'customer-register' %}">Sign Up</a>
+			</small>
+		</div>
+	</div>
+{% endblock content %}
