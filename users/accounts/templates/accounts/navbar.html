@@ -1,0 +1,32 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+
+        {% endblock title %}
+    </title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="logo">Handy</li>
+                <li>nav icon 1</li>
+                <li>nav icon 2</li>
+                <li>nav icon 3</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+{% extends "accounts/navbar.html" %}
+
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block content %}
+
+<header>
+    <strong>NAME : {{user.username}}</strong><br>
+    <strong>EMAIL : {{user.profile.email}}</strong><br>
+    <strong>FIRST NAME : {{user.profile.first_name}}</strong><br>
+    <strong>LAST_NAME : {{user.profile.last_name}}</strong><br>
+    <img class="pic" src="{{user.profile.profile_pic.url}}" alt="" width="100" height="100"><br>
+    <a href="{% url 'logout' %}">Logout</a>
+    {% comment %} <a href="{% url 'addpropic' %}">Add profile picture</a> {% endcomment %}
+</header>s
+
+{% endblock content %}
