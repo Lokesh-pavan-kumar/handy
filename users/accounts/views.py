@@ -10,7 +10,7 @@ from django.utils.http import urlsafe_base64_encode
 from .tokens import account_activation_token
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
-from .forms import SignUpForm
+from .forms import *
 from .tokens import account_activation_token
 
 
@@ -80,6 +80,36 @@ def dashboard_view(request):
 def user_view(request):
     user = request.user
     return HttpResponse(user)
+
+
+def settings_view(request):
+    return render(request, 'accounts/settings.html')
+
+
+@login_required(login_url='login')
+def changepassword_view(request):
+    user = request.user
+    print('password is ' + user.password)
+    if request.method == 'POST':
+        form = ChangePasswordForm(request.POST)
+        if form.is_valid():
+            form.verify_pass()
+            form.verify_login(request)
+            user.password = form.cleaned_data[newpass]
+    else:
+        form = ChangePasswordForm()
+        return render(request, 'accounts/changepassword.html', {'form': form})
+
+
+def changedetails_view(request):
+    if request.method == 'POST':
+        form = ChangeDetailsForm(request.POST)
+        if form.is_valid():
+            request.user.username = form.cleaned_data['UserName']
+            request.user.first_name = form.cleaned_data['FirstName']
+            request.user.last_name = form.cleaned_data['LastName']
+    form = ChangeDetailsForm()
+    return render(request, 'accounts/changedetails.html', {'form': form})
 
 
 # def profpic_add(request):

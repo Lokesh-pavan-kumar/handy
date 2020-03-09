@@ -6,14 +6,21 @@ Dashboard
 
 {% block content %}
 
-<header>
-    <strong>NAME : {{user.username}}</strong><br>
-    <strong>EMAIL : {{user.profile.email}}</strong><br>
-    <strong>FIRST NAME : {{user.profile.first_name}}</strong><br>
-    <strong>LAST_NAME : {{user.profile.last_name}}</strong><br>
-    <img class="pic" src="{{user.profile.profile_pic.url}}" alt="" width="100" height="100"><br>
-    <a href="{% url 'logout' %}">Logout</a>
+<header class="dashboard">
+    <div class="details">
+        <img class="pic" src="{{user.profile.profile_pic.url}}" alt="" width="100" height="100"><br>
+        <li>Hello {{user.profile.first_name}} {{user.profile.last_name}}</li>
+    </div>
+    <div class="functions">
+        <li>My Orders</li>
+        <li>My Wishlist</li>
+        <li><a href="{% url 'settings' %}">settings</a></li>
+    </div>
     {% comment %} <a href="{% url 'addpropic' %}">Add profile picture</a> {% endcomment %}
-</header>s
+</header>
+
+<footer>
+    <a href="{% url 'logout' %}">Logout</a>
+</footer>
 
 {% endblock content %}

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
-from accounts.views import home_view, signup_view, activation_sent_view, activate, dashboard_view
+from accounts.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -44,5 +44,8 @@ urlpatterns = [
              template_name='accounts/password_reset_complete.html'),
          name='password_reset_complete'),
     path('dashboard/', dashboard_view, name='dashboard'),
+    path('settings/', settings_view, name='settings'),
+    path('changepassword/', changepassword_view, name='change_password'),
+    path('changeaccountdetails/', changedetails_view, name='change_details'),
     # path('addprofilepicture/', profpic_add, name='addpropic')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
