@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Profile
 
 
 class SignUpForm(UserCreationForm):
@@ -55,3 +56,12 @@ class ChangeDetailsForm(forms.Form):
     UserName = forms.CharField(max_length=100, required=False)
     FirstName = forms.CharField(max_length=100, required=False)
     LastName = forms.CharField(max_length=100, required=False)
+
+
+class ProfilePictureFrom(forms.ModelForm):
+    profile_pic = forms.ImageField(
+        label='Upload Profile Picture', required=False)
+
+    class Meta:
+        model = Profile
+        fields = ('profile_pic',)

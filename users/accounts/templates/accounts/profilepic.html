@@ -1,14 +1,14 @@
-{% extends "account/navbar.html" %}
+{% extends "accounts/navbar.html" %}
 
 {% block title %}
-    Add Profile Picture
+Change Profile Picture
 {% endblock title %}
 
 {% block content %}
-    <form action="{% url {{user.profile.profile_pic.url}} %}" method="post" enctype="multipart/form-data">{% csrf_token %}
-    <p>
-        <input id="id_image" type="file" class="" name="image">
-    </p>
-    <input type="submit" value="Submit" />
+<form method="POST" enctype="multipart/form-data">
+    <legend>Change Profile Picture</legend>
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Change Picture</button>
 </form>
 {% endblock content %}
