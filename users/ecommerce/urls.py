@@ -45,7 +45,11 @@ urlpatterns = [
          name='password_reset_complete'),
     path('dashboard/', dashboard_view, name='dashboard'),
     path('settings/', settings_view, name='settings'),
-    path('changepassword/', changepassword_view, name='change_password'),
+    path('password_change', auth_views.PasswordChangeView.as_view(
+        template_name='accounts/changepassword.html'),
+        name='password_change'),
+    path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='accounts/passchangedone.html'),
+         name='password_change_done'),
     path('changeaccountdetails/', changedetails_view, name='change_details'),
     # path('addprofilepicture/', profpic_add, name='addpropic')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
