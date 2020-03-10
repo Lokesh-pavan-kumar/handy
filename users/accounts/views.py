@@ -17,7 +17,7 @@ import os
 
 
 def home_view(request):
-    return render(request, 'handy/home.html')
+    return render(request, 'accounts/home.html')
 
 
 def activation_sent_view(request):
@@ -38,7 +38,7 @@ def activate(request, uidb64, token):
         user.profile.signup_confirmation = True
         user.save()
         login(request, user)
-        return redirect('handy-home')
+        return redirect('home')
     else:
         return render(request, 'accounts/activation_invalid.html')
 
@@ -118,9 +118,9 @@ def changedetails_view(request):
 
 @login_required(login_url='login')
 def changeprofilepic_view(request):
-    # file = open(
-    #     'C:/Users/jagruthi/Downloads/handy-profiles/handy-profiles/users/accounts/static/accounts/images/nordicjpg.jpg')
-    # myfile = File(file)
+    file = open(
+        'D:/Academics/College/ASE/Project/handy/users/media/profile_images/default.jpg')
+    myfile = File(file)
     if request.method == 'POST':
         user = request.user
         form = ProfilePictureFrom(request.POST, request.FILES, instance=user)

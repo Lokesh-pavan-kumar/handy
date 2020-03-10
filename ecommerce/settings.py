@@ -122,8 +122,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(
-    BASE_DIR, 'C:/Users/jagruthi/Downloads/handy-profiles/handy-profiles/users/media/profile_images')
-MEDIA_URL = '/profile_images/'
+    BASE_DIR, '/media/')
+MEDIA_URL = '/media/'
 STRIPE_SECRET_KEY = "sk_test_FmYod0XnBkJEkDAVbLFQWtmt00FnFzw9BW"
 STRIPE_PUBLISHABLE_KEY = "pk_test_XVl235NlMYFZKAzwrbQ4ufBE00WywK8Gwr"
 LOGIN_REDIRECT_URL = 'handy-home'

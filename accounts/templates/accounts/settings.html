@@ -1,11 +1,30 @@
-{% extends "accounts/navbar.html" %}
-
-{% block title %}
-Settings
-{% endblock title %}
+{% extends "handy/base.html" %}
 
 {% block content %}
-<a href="{% url 'change_details' %}">Change account details </a><br>
-<a href="{% url 'password_change' %}">Change Password</a><br>
-<a href="{% url 'profile_picture' %}">Add Profile Picture</a>
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/settings.css' %}">
+</head>
+
+<section class="organic-breadcrumb" id="productpage_header">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Change Account Information</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="{% url 'handy-home' %}">Home &emsp;</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <a href="{% url 'change_details' %}">Change account details </a><br>
+    <a href="{% url 'password_change' %}">Change Password</a><br>
+    <a href="{% url 'profile_picture' %}">Add Profile Picture</a>
+</section>
+
 {% endblock content %}

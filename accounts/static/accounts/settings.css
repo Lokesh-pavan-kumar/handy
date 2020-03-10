@@ -1,0 +1,12 @@
+body {
+    background-color: black;
+}
+
+.content-section {
+    background-color: blanchedalmond;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 80px;
+    margin-right: 80px;
+    block-size: 800px;
+}
