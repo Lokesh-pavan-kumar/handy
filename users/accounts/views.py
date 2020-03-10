@@ -1,5 +1,5 @@
 from django.contrib.auth import login, authenticate
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect, HttpResponse
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_text
 from django.contrib.auth.models import User
@@ -9,9 +9,11 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from .tokens import account_activation_token
 from django.template.loader import render_to_string
-
-from .forms import SignUpForm
+from django.contrib.auth.decorators import login_required
+from .forms import *
 from .tokens import account_activation_token
+from django.core.files import File
+import os
 
 
 def home_view(request):
@@ -70,3 +72,68 @@ def signup_view(request):
     else:
         form = SignUpForm()
     return render(request, 'accounts/signup.html', {'form': form})
+
+
+@login_required(login_url='login')
+def dashboard_view(request):
+    return render(request, 'accounts/dashboard.html')
+
+
+def user_view(request):
+    user = request.user
+    return HttpResponse(user)
+
+
+@login_required(login_url='login')
+def settings_view(request):
+    return render(request, 'accounts/settings.html')
+
+
+@login_required(login_url='login')
+def changepassword_view(request):
+    user = request.user
+    print('password is ' + user.password)
+    if request.method == 'POST':
+        form = ChangePasswordForm(request.POST)
+        if form.is_valid():
+            form.verify_pass()
+            form.verify_login(request)
+            user.password = form.cleaned_data[newpass]
+    else:
+        form = ChangePasswordForm()
+        return render(request, 'accounts/changepassword.html', {'form': form})
+
+
+@login_required(login_url='login')
+def changedetails_view(request):
+    if request.method == 'POST':
+        form = ChangeDetailsForm(request.POST)
+        if form.is_valid():
+            request.user.username = form.cleaned_data['UserName']
+            request.user.first_name = form.cleaned_data['FirstName']
+            request.user.last_name = form.cleaned_data['LastName']
+    form = ChangeDetailsForm()
+    return render(request, 'accounts/changedetails.html', {'form': form})
+
+
+@login_required(login_url='login')
+def changeprofilepic_view(request):
+    file = open(
+        'D:/Academics/College/ASE/Project/handy/users/media/profile_images/default.jpg')
+    myfile = File(file)
+    if request.method == 'POST':
+        user = request.user
+        form = ProfilePictureFrom(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            if not request.FILES.get('profile_pic', False):
+                print('No file')
+                request.user.profile.profile_pic.save('default.jpg', myfile)
+                return redirect('dashboard')
+            else:
+                form.save(commit=False)
+                request.user.profile.profile_pic = request.FILES.get(
+                    'profile_pic', False)
+                form.save()
+                return redirect('dashboard')
+    form = ProfilePictureFrom()
+    return render(request, 'accounts/ProfilePic.html', {'form': form})
