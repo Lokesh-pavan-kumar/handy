@@ -1,14 +1,33 @@
-{% extends "accounts/navbar.html" %}
-
-{% block title %}
-Change Profile Picture
-{% endblock title %}
+{% extends "handy/base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<form method="POST" enctype="multipart/form-data">
-    <legend>Change Profile Picture</legend>
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Change Picture</button>
-</form>
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/profilepic.css' %}">
+</head>
+
+<section class="organic-breadcrumb" id="productpage_header">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Update Profile Picture</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="{% url 'handy-home' %}">Home &emsp;</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit">Change Picture</button>
+    </form>    
+</section>
+
 {% endblock content %}

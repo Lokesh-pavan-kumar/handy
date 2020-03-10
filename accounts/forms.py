@@ -52,10 +52,16 @@ class ChangePasswordForm(forms.Form):
             raise forms.ValidationError('current password does not match')
 
 
-class ChangeDetailsForm(forms.Form):
-    UserName = forms.CharField(max_length=100, required=False)
-    FirstName = forms.CharField(max_length=100, required=False)
-    LastName = forms.CharField(max_length=100, required=False)
+class ChangeNameForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['first_name', 'last_name', 'address']
+
+
+class ChangeUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username']
 
 
 class ProfilePictureFrom(forms.ModelForm):

@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+}
+
+/* div {
+    border: 1px black solid;
+} */
+
+.content-section div {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    font-weight: bolder;
+}
+
+.content-section {
+    background-color: whitesmoke;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 80px;
+    padding-left: 50px;
+    margin-right: 80px;
+    block-size: 800px;
+    padding: 200px;
+    display: flex;
+    flex-direction: row;
+}

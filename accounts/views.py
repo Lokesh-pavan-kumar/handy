@@ -86,7 +86,20 @@ def user_view(request):
 
 @login_required(login_url='login')
 def settings_view(request):
-    return render(request, 'accounts/settings.html')
+    if request.method == 'POST':
+        p_form = ChangeNameForm(request.POST, instance=request.user.profile)
+        u_form = ChangeUserForm(instance=request.user)
+        if p_form.is_valid():
+            # u_form.save()
+            p_form.save()
+            return redirect('dashboard')
+        else:
+            print('Form Invalid')
+            return render(request, 'accounts/settings.html', {'u_form': u_form, 'p_form': p_form})
+    else:
+        p_form = ChangeNameForm(instance=request.user.profile)
+        u_form = ChangeUserForm(instance=request.user)
+        return render(request, 'accounts/settings.html', {'u_form': u_form, 'p_form': p_form})
 
 
 @login_required(login_url='login')
@@ -102,18 +115,6 @@ def changepassword_view(request):
     else:
         form = ChangePasswordForm()
         return render(request, 'accounts/changepassword.html', {'form': form})
-
-
-@login_required(login_url='login')
-def changedetails_view(request):
-    if request.method == 'POST':
-        form = ChangeDetailsForm(request.POST)
-        if form.is_valid():
-            request.user.username = form.cleaned_data['UserName']
-            request.user.first_name = form.cleaned_data['FirstName']
-            request.user.last_name = form.cleaned_data['LastName']
-    form = ChangeDetailsForm()
-    return render(request, 'accounts/changedetails.html', {'form': form})
 
 
 @login_required(login_url='login')

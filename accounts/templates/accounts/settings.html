@@ -1,4 +1,5 @@
 {% extends "handy/base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -22,9 +23,32 @@
 </section>
 
 <section class="content-section">
-    <a href="{% url 'change_details' %}">Change account details </a><br>
-    <a href="{% url 'password_change' %}">Change Password</a><br>
-    <a href="{% url 'profile_picture' %}">Add Profile Picture</a>
+    <div class="links">
+        <div class="div1">
+            <a href="{% url 'profile_picture' %}" class="example">
+                <img class="pic" src="{{user.profile.profile_pic.url}}" alt="" width="250" height="250">
+                <div class="content">
+                    <div class="text">Change<br>
+                        Profile<br>
+                        Picture</div>
+                </div>
+            </a>
+        </div>
+        <div class="div2">
+            <a class="change-password" href="{% url 'password_change' %}"> <strong>CHANGE</strong> <br><br> <strong>
+                    PASSWORD
+                </strong></a><br>
+        </div>
+    </div>
+    <div class="form">
+        <form method="POST">
+            <legend>Update Details</legend>
+            {% csrf_token %}
+            {{u_form|crispy}}
+            {{p_form|crispy}}
+            <button type="submit">Make Changes</button>
+        </form>
+    </div>
 </section>
 
 {% endblock content %}
