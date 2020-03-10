@@ -1,0 +1,14 @@
+#design {
+	background : url("homeimage.jpg") no-repeat center;
+	background-size: cover;
+	position: relative;
+	height: 100%;
+	width :100%;
+}
+
+#productpage_header {
+	background: grey; 
+	background-size: 100% 100%;
+	height: 400px;
+	width: 100%;
+}

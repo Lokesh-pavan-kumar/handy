@@ -1,0 +1,27 @@
+{% extends "accounts/navbar.html" %}
+
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block content %}
+
+<header class="dashboard">
+    <div class="details">
+        <img class="pic" src="{{user.profile.profile_pic.url}}" alt="" width="100" height="100"><br>
+        <li>{{user.profile.user}}</li>
+        <li>{{user.profile.first_name}} {{user.profile.last_name}}</li>
+        <li>{{user.profile.email}}</li>
+    </div>
+    <div class="functions">
+        <li><a href="">My Orders</a></li>
+        <li><a href="">My wishlist</a></li>
+        <li><a href="{% url 'settings' %}">settings</a></li>
+    </div>
+</header>
+
+<footer>
+    <a href="{% url 'logout' %}">Logout</a>
+</footer>
+
+{% endblock content %}
