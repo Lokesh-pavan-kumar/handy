@@ -116,5 +116,6 @@ def changeprofilepic_view(request):
                     'profile_pic', False)
                 form.save()
                 return redirect('dashboard')
-    form = ProfilePictureFrom(instance=request.user)
-    return render(request, 'accounts/ProfilePic.html', {'form': form})
+
+    form = ProfilePictureFrom()
+    return render(request, 'accounts/profilepic.html', {'form': form})

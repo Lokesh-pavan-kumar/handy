@@ -123,7 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(
-    BASE_DIR, '/media/')
+    BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STRIPE_SECRET_KEY = "sk_test_FmYod0XnBkJEkDAVbLFQWtmt00FnFzw9BW"
 STRIPE_PUBLISHABLE_KEY = "pk_test_XVl235NlMYFZKAzwrbQ4ufBE00WywK8Gwr"

@@ -12,6 +12,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length=150)
     address = models.TextField(blank=True)
     profile_pic = models.ImageField(default='default.jpg')
+
     signup_confirmation = models.BooleanField(default=False)
 
     def __str__(self):
