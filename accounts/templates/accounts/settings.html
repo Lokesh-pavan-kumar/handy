@@ -44,7 +44,7 @@
         <form method="POST">
             <legend>Update Details</legend>
             {% csrf_token %}
-            {{u_form|crispy}}
+            {% comment %} {{u_form|crispy}} {% endcomment %}
             {{p_form|crispy}}
             <button type="submit">Make Changes</button>
         </form>

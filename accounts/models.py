@@ -17,6 +17,11 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+    def set_image_to_default(self):
+        self.profile_pic.delete(save=False)  # delete old image file
+        self.profile_pic = 'default.jpg'
+        self.save()
+
 
 @receiver(post_save, sender=User)
 def update_profile_signal(sender, instance, created, **kwargs):

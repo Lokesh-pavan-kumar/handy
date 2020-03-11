@@ -103,38 +103,18 @@ def settings_view(request):
 
 
 @login_required(login_url='login')
-def changepassword_view(request):
-    user = request.user
-    print('password is ' + user.password)
-    if request.method == 'POST':
-        form = ChangePasswordForm(request.POST)
-        if form.is_valid():
-            form.verify_pass()
-            form.verify_login(request)
-            user.password = form.cleaned_data[newpass]
-    else:
-        form = ChangePasswordForm()
-        return render(request, 'accounts/changepassword.html', {'form': form})
-
-
-@login_required(login_url='login')
 def changeprofilepic_view(request):
-    # file = open(
-    #     'C:/Users/jagruthi/Downloads/handy-profiles/handy-profiles/users/accounts/static/accounts/images/nordicjpg.jpg')
-    # myfile = File(file)
     if request.method == 'POST':
-        user = request.user
-        form = ProfilePictureFrom(request.POST, request.FILES, instance=user)
+        form = ProfilePictureFrom(
+            request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             if not request.FILES.get('profile_pic', False):
-                print('No file')
-                request.user.profile.profile_pic.save('default.jpg', myfile)
+                request.user.profile.set_image_to_default()
                 return redirect('dashboard')
             else:
-                form.save(commit=False)
                 request.user.profile.profile_pic = request.FILES.get(
                     'profile_pic', False)
                 form.save()
                 return redirect('dashboard')
-    form = ProfilePictureFrom()
+    form = ProfilePictureFrom(instance=request.user)
     return render(request, 'accounts/ProfilePic.html', {'form': form})
