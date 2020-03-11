@@ -136,4 +136,4 @@ def changeprofilepic_view(request):
                 form.save()
                 return redirect('dashboard')
     form = ProfilePictureFrom()
-    return render(request, 'accounts/ProfilePic.html', {'form': form})
+    return render(request, 'accounts/profilepic.html', {'form': form})
