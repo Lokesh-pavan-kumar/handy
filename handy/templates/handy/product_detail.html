@@ -37,7 +37,8 @@
 						<h3>{{ object.name }}</h3>
 						<h2>${{ object.price }}</h2>
 						<ul class="list">
-							<li><a class="active" href="#"><span>Category</span> : {{ object.category.category }}</a></li>
+							<li><a class="active" href="/artisan/{{ object.artisan_id.pk }}"><span>Artisan</span> : {{ object.artisan_id.name }}</a></li>
+							<li><a href="#"><span>Category</span> : {{ object.category.category }}</a></li>
 							<li><a href="#"><span>Availibility</span> : {{ object.availability }}</a></li>
 						</ul>
 						<p>{{ object.description }}</p>
