@@ -1,0 +1,15 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+	{% for cat in category%}
+		<h3> {{ cat.category }} </h3>
+		<div>
+			{% for thumb in thumbnails %}
+				{% if thumb.category.pk == cat.pk %}
+					<img src="{{ thumb.image.url }}" width="90" height="100">
+					<h6>{{ thumb.name }}</h6>
+					<h6>{{ thumb.price }}</h6>
+				{% endif %}
+			{% endfor %}
+		</div>
+	{% endfor %}
+{% endblock content %}

@@ -1,0 +1,166 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+    <div class="content">
+
+            <div class="text-center icon">
+                <span class="fa fa-html5"></span>
+            </div>
+            {% if form.errors %}
+    <!-- Error messaging -->
+    <div id="errors">
+        <div class="inner">
+            {{ form.non_field_errors }}
+            <ul>
+                {% for field in form %}
+                    {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- /Error messaging -->
+{% endif %}
+            <div class="content-bottom">
+                    <form method="POST">
+                    {% csrf_token %}
+                         <div class="field-group">
+     <span class="fa fa-user" aria-hidden="true"></span>
+
+        <div class="wthree-field">
+              <input name="username" id="text1" type="text" value="" placeholder="Username" required>
+        </div>
+  </div>
+  <div class="field-group">
+     <span class="fa fa-user" aria-hidden="true"></span>
+
+        <div class="wthree-field">
+              <input name="first_name" id="text1" type="text" value="" placeholder="First Name" required>
+        </div>
+  </div>
+  <div class="field-group">
+     <span class="fa fa-user" aria-hidden="true"></span>
+
+        <div class="wthree-field">
+              <input name="last_name" id="text1" type="text" value="" placeholder="Last Name" required>
+        </div>
+  </div>
+  <div class="field-group">
+     <span class="fa fa-email" aria-hidden="true"></span>
+
+        <div class="wthree-field">
+              <input name="email" id="myInput" type="fa-email" value="" placeholder="Email" required>
+        </div>
+  </div>
+  <div class="field-group">
+   <span class="fa fa-lock" aria-hidden="true"></span>
+      <div class="wthree-field">
+        <input name="password1" id="myInput" type="Password" placeholder="Password">
+       </div>
+     </div>
+     <div class="field-group">
+   <span class="fa fa-lock" aria-hidden="true"></span>
+      <div class="wthree-field">
+        <input name="password2" id="myInput" type="Password" placeholder="Confirm Password">
+       </div>
+     </div>
+
+
+    <div class="wthree-field">
+        <button type="submit" class="btn">Sign Up</button>
+       </div>
+    </form>
+    <!-- <div class="border-top pt-3">
+      Already Have an account?<a class="ml-2" href="{% url 'login' %}">Sign In</a>
+    </div> --> 
+  </div>
+</div>
+{% endblock content %}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body>
+  {% if form.errors %}
+     Error messaging 
+    <div id="errors">
+        <div class="inner">
+            <p>There were some errors in the information you entered. Please correct the following:</p>
+            {{ form.non_field_errors }}
+            <ul>
+                {% for field in form %}
+                    {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+     /Error messaging 
+{% endif %}
+    <h2>Sign up Form</h2>
+<form method="post">
+  {% csrf_token %}
+   {% for field in form %}
+    <p>
+      {{ field.label_tag }}<br>
+      {{ field }}
+      {% if field.help_text %}
+        <small style="color: grey">{{ field.help_text }}</small>
+      {% endif %}
+      {%comment%}{% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+      {% endfor %}
+      {%endcomment%} 
+    </p>
+  {% endfor %}
+  {{form.as_p}}
+  <div class="field-group">
+     <span class="fa fa-user" aria-hidden="true"></span>
+
+        <div class="wthree-field">
+              <input name="username" id="text1" type="text" value="" placeholder="Username" required>
+        </div>
+  </div>
+  <div class="field-group">
+     <span class="fa fa-user" aria-hidden="true"></span>
+
+        <div class="wthree-field">
+              <input name="first_name" id="text1" type="text" value="" placeholder="First Name" required>
+        </div>
+  </div>
+  <div class="field-group">
+     <span class="fa fa-user" aria-hidden="true"></span>
+
+        <div class="wthree-field">
+              <input name="last_name" id="text1" type="text" value="" placeholder="Last Name" required>
+        </div>
+  </div>
+  <div class="field-group">
+     <span class="fa fa-email" aria-hidden="true"></span>
+
+        <div class="wthree-field">
+              <input name="email" id="myInput" type="fa-email" value="" placeholder="Email" required>
+        </div>
+  </div>
+  <div class="field-group">
+   <span class="fa fa-lock" aria-hidden="true"></span>
+      <div class="wthree-field">
+        <input name="password1" id="myInput" type="Password" placeholder="Password">
+       </div>
+     </div>
+     <div class="field-group">
+   <span class="fa fa-lock" aria-hidden="true"></span>
+      <div class="wthree-field">
+        <input name="password2" id="myInput" type="Password" placeholder="Confirm Password">
+       </div>
+     </div>
+
+
+    <div class="wthree-field">
+        <button type="submit" class="btn">Sign Up</button>
+       </div>
+    </form>
+  <button type="submit">Sign up</button>
+</form> 
+</body>
+</html>  -->

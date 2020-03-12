@@ -1,0 +1,53 @@
+{% extends "accounts/navbar.html" %}
+
+{% block title %}
+Change Profile Picture
+{% endblock title %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    <legend>Change Profile Picture</legend>
+    {% csrf_toke{% extends "handy/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/profilepic.css' %}">
+</head>
+
+<section class="organic-breadcrumb" id="productpage_header">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Update Profile Picture</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="{% url 'handy-home' %}">Home &emsp;</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="surround-form">
+            {{form|crispy}}
+            <!-- DRAG AND DROP <br> <br> OR <br> <br> CLICK TO CHOOSE
+            <div class="bottom">
+                <br> <br> <br>
+            </div> -->
+        </div>
+        <strong class="text">DRAG OR CLICK TO CHOOSE</strong><br>
+        <button class='submit-button' type="submit">Change Picture</button>
+    </form>
+</section>
+
+{% endblock content %}n %}
+    {{ form }}
+    <button type="submit">Change Picture</button>
+</form>
+{% endblock content %}

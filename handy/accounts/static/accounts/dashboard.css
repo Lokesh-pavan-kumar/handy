@@ -1,0 +1,91 @@
+body{
+    background-color: black;
+}
+
+section.dashboard,footer {
+    margin: 50px;
+    padding: 20px;
+    background-color: whitesmoke;
+}
+
+/* div {
+    border: 1px #ccc solid;
+} */
+
+.dashboard {
+    block-size: 500px;
+    color: black;
+    display: flex;
+    flex-basis: 500px;
+    list-style-type: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.details {
+    font-family: 'Times New Roman', Times, serif;
+    /* flex: 1; */
+    width: 400px;
+    text-align: center;
+    padding: 40px;
+}
+
+
+.pic {
+    border-radius: 50%;
+}
+
+.details li {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.functions {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* flex: 2; */
+}
+
+.horizontal1{
+    flex: 1;
+    display: flex;
+    width: 100%;
+    padding: 40px;
+}
+
+.horizontal2{
+    flex: 1;
+    display: flex;
+    width: 100%;
+    padding: 40px;
+}
+
+.horizontal1 .vertical1{
+    flex: 1;
+}
+
+.horizontal1 .vertical2{
+    flex: 1;
+}
+
+.horizontal2 .vertical1{
+    flex: 1;
+}
+
+.horizontal2 .vertical2{
+    flex: 1;
+}
+
+.links {
+    text-indent: -99999999;
+}
+
+@media screen and (max-width:1355px) {
+    .dashboard {
+        block-size: 1000px;         
+    }
+}
+
