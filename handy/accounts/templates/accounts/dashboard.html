@@ -1,0 +1,63 @@
+{% extends "handy/base.html" %}
+
+{% block content %}
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/dashboard.css' %}">
+</head>
+
+<section class="organic-breadcrumb" id="productpage_header">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>DASHBOARD</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="{% url 'handy-home' %}">Home &emsp;</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="dashboard">
+    <div class="details">
+        <img class="pic" src="{{user.profile.profile_pic.url}}" alt="" width="250" height="250"><br>
+        <li>{{user.profile.user}}</li>
+        <li>{{user.profile.first_name}} {{user.profile.last_name}}</li>
+        <li>{{user.profile.email}}</li>
+    </div>
+    <div class="functions">
+        <div class="horizontal1">
+            <div class="vertical1">
+                <a href="" class="links">
+                    <img class="pic" src="{% static 'accounts/images/orders.png' %}"
+                        alt="{% static 'accounts/images/orders.png' %}" width="150" height="150">
+                </a>
+            </div>
+            <div class="vertical2">
+                <a href="" class="links">
+                    <img class="pic" src="{% static 'accounts/images/cart.png' %}"
+                        alt="{% static 'accounts/images/cart.png' %}" width="150" height="150">
+                </a>
+            </div>
+        </div>
+        <div class="horizontal2">
+            <div class="vertical1">
+                <a href="" class="links">
+                    <img class="pic" src="{% static 'accounts/images/WishList.png' %}"
+                        alt="{% static 'accounts/images/cart.png' %}" width="150" height="150">
+                </a>
+            </div>
+            <div class="vertical2">
+                <a href="{% url 'settings' %}">
+                    <img class="pic" src="{% static 'accounts/images/settings.png' %}"
+                        alt="{% static 'accounts/images/cart.png' %}" width="150" height="150">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

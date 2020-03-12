@@ -1,0 +1,117 @@
+body {
+    background-color: black;
+}
+
+/* div {
+    border: 1px black solid;
+} */
+
+.content-section {
+    background-color: whitesmoke;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 80px;
+    padding-left: 50px;
+    margin-right: 80px;
+    block-size: 800px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.links {
+    margin: 5px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    margin: 5px;
+    padding-top: 100px;
+    flex: 1;
+}
+
+.div1{
+    flex: 1;
+    padding-left: 180px;
+    padding-top: 80px;
+}
+
+.div2 {
+    flex: 1;
+    padding-right: 40px;
+    padding-top: 150px;
+    text-align: center;
+}
+
+
+.details {
+    font-family: 'Times New Roman', Times, serif;
+    /* flex: 1; */
+    width: 400px;
+    text-align: center;
+    padding: 40px;
+}
+
+.pic {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.example {
+    position:relative;
+    padding:0;
+    width:300px;
+    display:block;
+    cursor:pointer;
+    overflow:hidden;
+}
+
+.content {
+    opacity:0;
+    font-size: 20px;
+    position:absolute;
+    top:-150px;
+    left:0px;
+    color:black;
+    background-color:whitesmoke;
+    width:250px;
+    height:400px;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
+    text-align:center;
+}
+
+.example .content:hover { 
+    opacity:0.5; 
+}
+
+.example .content .text {
+    height:0;
+    opacity:1;
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+}
+
+.example .content:hover .text {
+    opacity:1;
+    transform: translateY(250px);
+    -webkit-transform: translateY(250px);
+}
+
+.change-password {
+    font-size: 40px;
+    color: black;
+}
+
+.change-password:hover {
+    color: yellowgreen;
+}
+
+@media screen and (max-width:1355px) {
+    block-size: 1600px; 
+}
