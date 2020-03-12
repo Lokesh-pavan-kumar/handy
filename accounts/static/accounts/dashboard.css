@@ -82,3 +82,10 @@ section.dashboard,footer {
 .links {
     text-indent: -99999999;
 }
+
+@media screen and (max-width:1355px) {
+    .dashboard {
+        block-size: 1000px;         
+    }
+}
+

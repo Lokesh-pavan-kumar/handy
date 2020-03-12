@@ -16,6 +16,7 @@ body {
     block-size: 800px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .links {
@@ -111,3 +112,6 @@ body {
     color: yellowgreen;
 }
 
+@media screen and (max-width:1355px) {
+    block-size: 1600px; 
+}

@@ -37,22 +37,11 @@ class SignUpForm(UserCreationForm):
                   'email', 'password1', 'password2')
 
 
-class ChangePasswordForm(forms.Form):
-    currentpass = forms.CharField(max_length=32, widget=forms.PasswordInput)
-    newpass = forms.CharField(max_length=32, widget=forms.PasswordInput)
-    passagain = forms.CharField(max_length=32, widget=forms.PasswordInput)
-
-    def verify_pass(self):
-        if newpass and passagain and newpass != passagain:
-            raise forms.ValidationError('passwords do not match')
-
-    def verify_login(self, request):
-        if currentpass and currentpass != request.User.password:
-            print(request.User.password)
-            raise forms.ValidationError('current password does not match')
-
-
 class ChangeNameForm(forms.ModelForm):
+    first_name = forms.CharField(label='First Name', required=False)
+
+    last_name = forms.CharField(label='Last Name', required=False,)
+
     class Meta:
         model = Profile
         fields = ['first_name', 'last_name', 'address']
@@ -66,7 +55,12 @@ class ChangeUserForm(forms.ModelForm):
 
 class ProfilePictureFrom(forms.ModelForm):
     profile_pic = forms.ImageField(
-        label='Upload Profile Picture', required=False)
+        label='Upload Profile Picture', required=False, widget=forms.FileInput(
+            attrs={
+                'class': 'profile-pic',
+                'placeholder': 'Change Profile Pic'
+            }
+        ))
 
     class Meta:
         model = Profile
