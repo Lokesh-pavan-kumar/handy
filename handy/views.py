@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product, Category
+from .models import Product, Category, Artisan
 from django.views.generic import ListView, DetailView
 
 
@@ -14,3 +14,5 @@ def home(request):
 class ProductDetailView(DetailView):
     model = Product
 
+class ArtisanDetailView(DetailView):
+	model = Artisan
