@@ -2,7 +2,7 @@ body{
     background-color: black;
 }
 
-section.dashboard,footer {
+section.dashboard {
     margin: 50px;
     padding: 20px;
     background-color: whitesmoke;

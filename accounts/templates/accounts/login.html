@@ -5,6 +5,20 @@
             <div class="text-center icon">
                 <span class="fa fa-html5"></span>
             </div>
+            {% if form.errors %}
+    <!-- Error messaging -->
+    <div id="errors">
+        <div class="inner">
+            {{ form.non_field_errors }}
+            <ul>
+                {% for field in form %}
+                    {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- /Error messaging -->
+{% endif %}
             <div class="content-bottom">
                     <form method="POST">
                     {% csrf_token %}
@@ -25,7 +39,7 @@
                             <button type="submit" class="btn">Login</button>
                         </div>
                     </form>
-                    
+
                     <ul class="list-login">
                         <li class="switch-agileits">
                             <label class="switch">
@@ -33,12 +47,15 @@
                                 <span class="slider round"></span>
                                 keep Logged in
                             </label>
-                        </li>
+                        </li> 
+                        
+                    
                         <li>
                             <a href="{% url 'password_reset' %}" class="text-right">forgot password?</a>
                         </li>
                         <li class="clearfix"></li>
                     </ul>
+                    
                     <ul class="list-login-bottom">
                         <li class="">
                             <a href="{% url 'signup' %}" class="">Create Account</a>

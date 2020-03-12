@@ -20,7 +20,7 @@ body {
 }
 
 .main {
-    background: url("images/nordic.jpg") no-repeat center;
+    background: url("images/homeimage.jpg") no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -135,6 +135,10 @@ ul.list-login-bottom li:nth-child(2) {
 }
 
 /*/////////////// FORM STYLES ////////////////////*/
+
+#errors{
+    color:red;
+}
 
 form .field-group {
     background: rgba(255, 255, 255, 0.15);

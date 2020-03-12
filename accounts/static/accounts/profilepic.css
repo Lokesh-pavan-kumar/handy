@@ -2,16 +2,18 @@ body {
     background-color: black;
 }
 
-div {
+/* div {
     font-size: xx-large;
     color: black;
     font-
-}
+} */
 
 .content-section div {
     padding-top: 25px;
     padding-bottom: 25px;
     font-weight: bolder;
+    font-size: xx-large;
+    color: black;
 }
 
 .content-section {

@@ -44,7 +44,8 @@ class ChangeNameForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['first_name', 'last_name', 'address']
+        fields = ['first_name', 'last_name', 'Door_flat',
+                  'Street', 'City', 'State', 'Country', 'Pincode']
 
 
 class ChangeUserForm(forms.ModelForm):
