@@ -7,8 +7,14 @@ class Artisan(models.Model):
 	address = models.TextField()
 	birthday = models.DateField()
 
+	def __str__(self):
+		return self.name
+
 class Category(models.Model):
 	category = models.CharField(max_length=30)
+
+	def __str__(self):
+		return self.category
 
 class Product(models.Model):
 	artisan_id = models.ForeignKey(
@@ -30,4 +36,7 @@ class Product(models.Model):
 	price = models.FloatField()
 	description = models.TextField()
 	availability = models.BooleanField(default=False)
+
+	def __str__(self):
+		return self.name
 
