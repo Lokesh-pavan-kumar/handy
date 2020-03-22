@@ -10,11 +10,17 @@ class Artisan(models.Model):
 	def __str__(self):
 		return self.name
 
+	class Meta:
+		unique_together = (('contact'),)
+
 class Category(models.Model):
 	category = models.CharField(max_length=30)
 
 	def __str__(self):
 		return self.category
+
+	class Meta:
+		unique_together = (('category'),)
 
 class Product(models.Model):
 	artisan_id = models.ForeignKey(
@@ -39,4 +45,7 @@ class Product(models.Model):
 
 	def __str__(self):
 		return self.name
+
+	class Meta:
+		unique_together = (('artisan_id','category','name'),)
 
