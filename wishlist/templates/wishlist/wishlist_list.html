@@ -1,0 +1,63 @@
+{% extends 'handy/base.html' %}
+{% block content %}
+
+	<section class="organic-breadcrumb" id="productpage_header">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>I wish I have these...</h1>
+					<nav class="d-flex align-items-center">
+						<a href="{% url 'handy-home' %}">Home &emsp;</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <section class="cart_area">
+        <div class="container">
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        	{% for object in items %}
+	                            <tr>
+	                                <td>
+	                                    <div class="media">
+	                                        <div class="d-flex">
+	    										<img class="img-responsive cart-item-image" src="{{ object.product.image.url }}" height="100px" width="100px">
+	                                        </div>
+	                                        <div class="media-body">
+	                                            <p><span class="cart-item-title"><a href="/product/{{ object.product.pk }}">{{ object.product.name }}</a></span></p>
+	                                        </div>
+	                                    </div>
+	                                </td>
+	                                <td>
+	                                    <h5><span class="cart-price cart-column shop-item-price">${{object.product.price}}</span></h5>
+	                                </td>
+
+	                                <td>
+		                                <div class="cart-quantity cart-column">
+		                					<a href="/wishlist/remove/{{ object.id }}">
+		            	    					<button class="btn btn-danger" type="button">REMOVE</button>
+		                					</a>
+		            					</div>
+		            				</td>
+	                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+

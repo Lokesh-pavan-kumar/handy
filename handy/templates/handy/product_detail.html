@@ -1,5 +1,6 @@
 
 {% extends 'handy/base.html' %}
+{% load ratings %}
 {% block content %}
 
 	<section class="organic-breadcrumb" id="productpage_header">
@@ -41,8 +42,14 @@
 							<li><a href="#"><span>Category</span> : {{ object.category.category }}</a></li>
 							<li><a href="#"><span>Availibility</span> : {{ object.availability }}</a></li>
 						</ul>
-						<p>{{ object.description }}</p>
+						<p>{{ object.description|linebreaksbr }}</p>
 					</div>
+					<a href="/cart/{{ object.pk }}">
+						<button type="button" class="btn btn-warning btn-lg btn-block">
+							<p>Add to cart</p>
+						</button>
+					</a>
+					{% ratings object %}
 				</div>
 			</div>
 		</div>

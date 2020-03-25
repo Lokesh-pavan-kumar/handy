@@ -18,9 +18,14 @@
 	<link rel="stylesheet" href="{% static 'handy/css/ion.rangeSlider.skinFlat.css' %}">
 	<link rel="stylesheet" href="{% static 'handy/css/magnific-popup.css' %}">
 	<link rel="stylesheet" href="{% static 'handy/css/main.css' %}">
+   	<link rel="stylesheet" href="{% static 'handy/css/store.css' %}">
+    <link rel="stylesheet" href="{% static 'handy/css/linearicons.css' %}">
+   	<link rel="stylesheet" href="{% static 'handy/css/font-awesome.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'handy/css/own.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'handy/css/store.css'%}">
 
+	<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+	<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 </head>
 <body>
 
@@ -41,6 +46,7 @@
 								<li class="nav-item"><a class="nav-link" href="{% url 'handy-home' %}">Home</a></li>
 								<li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">Profile</a></li>
 								<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+								<li class="nav-item"><a class="nav-link" href="{% url 'wishlist' %}">Wishlist</a></li>
 								<li class="nav-item"><a class="nav-link" href="{% url 'cartit' %}">Cart</a></li>
 
 							{% else %}
@@ -103,7 +109,6 @@
 	<script src="{% static  'handy/js/gmaps.min.js' %}"></script>
 	<script src="{% static  'handy/js/main.js' %}"></script>
 	<script src="{% static 'handy/js/store.js' %}"></script>
-
 
 </body>
 </html>

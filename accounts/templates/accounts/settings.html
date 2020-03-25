@@ -26,13 +26,18 @@
     <div class="links">
         <div class="div1">
             <a href="{% url 'profile_picture' %}" class="example">
-                <img class="pic" src="{{user.profile.profile_pic.url}}" alt="Change Profile Picture" width="250" height="250">
+                <img class="pic" src="{{user.profile.profile_pic.url}}" alt="" width="250" height="250">
                 <div class="content">
                     <div class="text">Change<br>
                         Profile<br>
                         Picture</div>
                 </div>
             </a>
+        </div>
+        <div class="div2">
+            <a class="change-password" href="{% url 'password_change' %}"> <strong>CHANGE</strong> <br><br> <strong>
+                    PASSWORD
+                </strong></a><br>
         </div>
     </div>
     <div class="form">
@@ -41,9 +46,6 @@
             {% csrf_token %}
             {% comment %} {{u_form|crispy}} {% endcomment %}
             {{p_form|crispy}}
-            <a class="change-password" href="{% url 'password_change' %}">
-                <button>Change Password</button>
-            </a>
             <button type="submit">Make Changes</button>
         </form>
     </div>

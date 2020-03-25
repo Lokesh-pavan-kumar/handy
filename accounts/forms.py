@@ -38,17 +38,9 @@ class SignUpForm(UserCreationForm):
 
 
 class ChangeNameForm(forms.ModelForm):
-    first_name = forms.CharField(label='First Name', required=False,  widget=forms.TextInput(
-        attrs={
-            'autocomplete': 'off'
-        }
-    ))
+    first_name = forms.CharField(label='First Name', required=False)
 
-    last_name = forms.CharField(label='Last Name', required=False, widget=forms.TextInput(
-        attrs={
-            'autocomplete': 'off'
-        }
-    ))
+    last_name = forms.CharField(label='Last Name', required=False,)
 
     class Meta:
         model = Profile
