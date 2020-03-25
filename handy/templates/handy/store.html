@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cart</title>
+        <meta name="description" content="This is the description">
+        <link rel="stylesheet" href="{% static 'handy/css/store.css' %}">
+        <link rel="stylesheet" href="{% static 'handy/css/linearicons.css' %}">
+        <link rel="stylesheet" href="{% static 'handy/css/font-awesome.min.css' %}">
+ 
+
+    </head>
+    <body>
+      <a href="{% url 'handy-home' %}">
+          <i class="fas fa-arrow-circle-left fa-2x" style="margin: 0.5em;"></i>
+      </a>
+
+      <section class="container content-section">
+          <h2 class="section-header">CART</h2>
+          <!-- {% for item in items %} -->
+          <!-- <div class="cart-row">
+              <span class="cart-item cart-header cart-column">ITEM</span>
+              <span class="cart-price cart-header cart-column">PRICE</span>
+              <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+          </div> -->
+          <!-- {% endfor %} -->
+          <!-- <div class="cart-items">
+          </div> -->
+          <!-- <div class="cart-total">
+              <strong class="cart-total-title">Total</strong>
+              <span class="cart-total-price">${{total}}</span>
+          </div>
+          <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+      </section> -->
+
+
+<!--
+        <section class="container content-section">
+            <h2 class="section-header">CART</h2> -->
+            <div class="cart-items">
+            {% for item in items %}
+            <div class="cart-row">
+                <div class="cart-item cart-column">
+                    <img class="img-responsive cart-item-image" src="{{item.product.image.url}}" alt="" height="100px" width="100px">
+                    <span class="cart-item-title">{{item.product}}</span>
+                </div>
+                <span class="cart-price cart-column shop-item-price">${{item.product.price}}</span>
+                <div class="cart-quantity cart-column">
+                    <input class="cart-quantity-input" id="myInput{{item.product.pk}}" type="number" value='{{item.quantity}}' onchange="myFunction({{item.product.pk}})">
+
+                  </input>
+                  <!-- <select id="mySelect" onchange="myFunction()">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select> -->
+
+                    <a href="/del_cart/{{ item.product.pk }}">
+                        <button class="btn btn-danger" type="button">REMOVE</button>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+
+            <div class="cart-total">
+                <strong class="cart-total-title">Total</strong>
+                <span class="cart-total-price">{{total}}</span>
+            </div>
+
+            <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+        </section>
+
+         <script src="{% static 'handy/js/store.js' %}" async></script>
+         <script>
+function myFunction(p) {
+  console.log(p)
+  console.log(typeof(p))
+  console.log("myInput"+p.toString())
+  var x = document.getElementById("myInput"+p.toString()).value;
+  console.log(x.toString())
+
+  if(x.toString() != ''){
+    console.log('a')
+    $.ajax({
+            type: 'POST',
+            url: '{% url "update_cart" %}',
+            data: { 'quantity': x,
+                    'product': p,
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+           },
+            dataType: 'json',
+            success: function(data) {
+              console.log(data)
+            }
+        });
+    // location.replace('http://127.0.0.1:8000')
+    console.log('done')
+  }
+}
+
+//
+// function myFunction() {
+//   var x = document.getElementById("mySelect").value;
+//   document.getElementById("demo").innerHTML = "You selected: " + x;
+// }
+</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/4a0847cba3.js" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -51,5 +51,5 @@ urlpatterns = [
         name='password_change'),
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='accounts/passchangedone.html'),
          name='password_change_done'),
-    path('changeprofilepicture/', changeprofilepic_view, name='profile_picture')
+    path('changeprofilepicture/', changeprofilepic_view, name='profile_picture'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

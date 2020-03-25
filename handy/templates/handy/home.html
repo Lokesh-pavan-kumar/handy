@@ -1,7 +1,7 @@
 {% extends 'handy/base.html' %}
 {% block content %}
 	<div class="mb-5" id="design">
-		
+
 	</div>
 
 	<div class="container">
@@ -10,62 +10,38 @@
 				<div class="section-title">
 					<h1>Handpicked Handicrafts</h1>
 				</div>
-				
+
 			</div>
 		</div>
-		
-		<div class="row">
-			{% for thumb in thumbnails %}
-				<div class="col-lg-3 col-md-6">
-					<div class="single-product">
-						<a href="/product/{{ thumb.pk }}"><img class="img-fluid" src="{{ thumb.image.url }}" alt="" height="260px" width="280px"></a>
-						<div class="product-details">
+
+	<div class="row">
+	{% for thumb in thumbnails %}
+		<div class="col-lg-3 col-md-6">
+			<div class="single-product">
+			   <div class="shadow">
+					<a href="/product/{{ thumb.pk }}">
+						<img class="img-responsive" src="{{ thumb.image.url }}" alt="" height="300px" width="500px">
+					</a>
+
+					<div class="product-details">
+						<div class="producttitle">
 							<h6>{{ thumb.name }}</h6>
-							<div class="price">
+						</div>
+						<div class="productprice">
 								<h6>${{ thumb.price }}</h6>
-							</div>
 						</div>
 					</div>
-				</div>
-			{% endfor %}
-		</div>
+					<a href="/cart/{{ thumb.pk }}">	
+					<button type="button" class="btn btn-warning btn-lg btn-block">
+						<p>Add to cart</p>
+	            	</button>
+						</a>
+	        	</div>
+		 	</div>
+ 		</div>
+	{% endfor %}
 	</div>
+</div>
+
+
 {% endblock content %}
-
-
-
-<!-- 
-
-	<div class="mb-5" id="design">
-		
-	</div>
-
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-6 text-center">
-				<div class="section-title">
-					<h1>Handpicked Handicrafts</h1>
-				</div>
-				
-			</div>
-		</div>
-		
-		<div class="row">
-			{% for thumb in thumbnails %}
-				<div class="col-lg-3 col-md-6">
-					<div class="single-product">
-						<a href="/product/{{ thumb.pk }}"><img class="img-fluid" src="{{ thumb.image.url }}" alt="" height="260px" width="280px"></a>
-						<div class="product-details">
-							<h6>{{ thumb.name }}</h6>
-							<div class="price">
-								<h6>${{ thumb.price }}</h6>
-							</div>
-						</div>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
-
-
- -->

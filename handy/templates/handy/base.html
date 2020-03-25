@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="{% static 'handy/css/magnific-popup.css' %}">
 	<link rel="stylesheet" href="{% static 'handy/css/main.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'handy/css/own.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'handy/css/store.css'%}">
 
 </head>
 <body>
@@ -40,6 +41,7 @@
 								<li class="nav-item"><a class="nav-link" href="{% url 'handy-home' %}">Home</a></li>
 								<li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">Profile</a></li>
 								<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+								<li class="nav-item"><a class="nav-link" href="{% url 'cartit' %}">Cart</a></li>
 
 							{% else %}
 								<li class="nav-item"><a class="nav-link" href="{% url 'handy-home' %}">Home</a></li>
@@ -55,8 +57,8 @@
 
 
 	{% block content %}
-
 	{% endblock content %}
+
 		<footer class="footer-area section_gap">
 		<div class="container">
 			<div class="row">
@@ -100,8 +102,10 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="{% static  'handy/js/gmaps.min.js' %}"></script>
 	<script src="{% static  'handy/js/main.js' %}"></script>
+	<script src="{% static 'handy/js/store.js' %}"></script>
 
 
 </body>
 </html>
+
 

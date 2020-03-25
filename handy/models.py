@@ -49,3 +49,16 @@ class Product(models.Model):
 	class Meta:
 		unique_together = (('artisan_id','category','name'),)
 
+class Cart(models.Model):
+	product = models.ForeignKey(
+		'Product',
+		models.SET_NULL,
+		blank=True,
+		null=True,
+		)
+	use_name = models.CharField(max_length=100)
+	quantity = models.IntegerField(default=0)
+	active = models.BooleanField(default=False)
+
+	def __str__(self):
+		return self.use_name
