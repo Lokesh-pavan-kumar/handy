@@ -20,7 +20,7 @@ from django.contrib.auth import views as auth_views
 from accounts.views import *
 from django.conf import settings
 from django.conf.urls.static import static
-
+from handy import views as handy_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -52,4 +52,5 @@ urlpatterns = [
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='accounts/passchangedone.html'),
          name='password_change_done'),
     path('changeprofilepicture/', changeprofilepic_view, name='profile_picture'),
+    url('ratings/', include('star_ratings.urls', namespace='ratings')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

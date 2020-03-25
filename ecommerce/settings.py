@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'accounts',
     'six',
     'orders',
+    'star_ratings',
     'crispy_forms',
     'django.contrib.auth',
     'django.contrib.contenttypes',
