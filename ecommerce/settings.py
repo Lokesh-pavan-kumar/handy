@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'django_countries',
     'accounts',
     'six',
     'orders',
@@ -117,6 +118,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+print('Path is : ' + os.path.join(BASE_DIR, 'static'))
 
 
 # Static files (CSS, JavaScript, Images)
