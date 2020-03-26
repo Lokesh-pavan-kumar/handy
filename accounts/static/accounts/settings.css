@@ -1,10 +1,17 @@
+html {
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
 body {
     background-color: black;
 }
 
-/* div {
-    border: 1px black solid;
-} */
+div {
+    /* border: 1px black solid;
+    overflow-y: scroll; */
+}
 
 .content-section {
     background-color: whitesmoke;
@@ -30,33 +37,20 @@ body {
     margin: 5px;
     padding-top: 100px;
     flex: 1;
+    color: black;
+    font-weight: bolder;
 }
 
 .div1{
     flex: 1;
     padding-left: 180px;
-    padding-top: 80px;
+    padding-top: 250px;
 }
 
-.div2 {
-    flex: 1;
-    padding-right: 40px;
-    padding-top: 150px;
-    text-align: center;
-}
-
-
-.details {
-    font-family: 'Times New Roman', Times, serif;
-    /* flex: 1; */
-    width: 400px;
-    text-align: center;
-    padding: 40px;
-}
 
 .pic {
     border-radius: 50%;
-    overflow: hidden;
+    overflow: hidden;   
 }
 
 .example {
@@ -87,14 +81,14 @@ body {
 }
 
 .example .content:hover { 
-    opacity:0.5; 
+    opacity:0.8; 
 }
 
 .example .content .text {
     height:0;
     opacity:1;
     transition-delay: 0s;
-    transition-duration: 0.4s;
+    /* transition-duration: 0.4s; */
 }
 
 .example .content:hover .text {
@@ -104,14 +98,53 @@ body {
 }
 
 .change-password {
-    font-size: 40px;
     color: black;
+    margin-right: 10px; 
 }
+
+#div_id_Pincode {
+    margin-bottom: 20px;
+}
+
+/* ul{
+    max-height: 200px;
+} */
+
+#div_id_Pincode::before { 
+    content: "\A\A"; 
+    white-space: pre; 
+} 
 
 .change-password:hover {
     color: yellowgreen;
 }
 
+.control-group {
+    margin-bottom: 10px;
+    transition-delay: 10s;
+    /* background-color: red; */
+}
+
+.textinput {
+    width: 250px;
+	transition: all 0.2s ease-in-out;
+}
+
+.textinput:focus {
+    width: 350px;
+}
+
+.nice-select {
+    font-weight: lighter;
+    border-radius: 0%;
+    border: 1.5px #888888 solid;
+    font-size: small;
+}
+
+.nice-select::after { 
+    content: "\A"; 
+    white-space: pre; 
+} 
+
 @media screen and (max-width:1355px) {
-    block-size: 1600px; 
 }
