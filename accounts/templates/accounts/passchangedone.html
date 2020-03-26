@@ -1,9 +1,37 @@
-{% extends "accounts/navbar.html" %}
-
-{% block title %}
-Change Password
-{% endblock title %}
+{% extends "handy/base.html" %}
 
 {% block content %}
-<header>Password Changed Successfully</header>
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/changepassdone.css' %}">
+</head>
+
+<section class="organic-breadcrumb" id="productpage_header">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Change Account Information</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="{% url 'handy-home' %}">Home &emsp;</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+
+    <ul>
+        <li><strong>PASSWORD HAS BEEN CHANGED SUCCESSFULLY!!</strong></li>
+        <li>
+            <a href="{% url 'handy-home' %}">
+                <button type="button">
+                    Click to go to Homepage
+                </button>
+            </a>
+        </li>
+    </ul>
+</section>
 {% endblock content %}

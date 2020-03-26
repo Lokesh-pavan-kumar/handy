@@ -106,9 +106,10 @@ div {
     margin-bottom: 20px;
 }
 
-/* ul{
-    max-height: 200px;
-} */
+ul{
+    max-height: 500%;
+    overflow-y: scroll;
+}
 
 #div_id_Pincode::before { 
     content: "\A\A"; 
@@ -139,6 +140,8 @@ div {
     border-radius: 0%;
     border: 1.5px #888888 solid;
     font-size: small;
+    display: block;
+    max-height: 500%;
 }
 
 .nice-select::after { 
