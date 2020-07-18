@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import sessions
 from django.contrib.auth.decorators import login_required
 from search import views as search_views
+from django.http import HttpResponseRedirect
 
 def home(request):
     if request.GET:

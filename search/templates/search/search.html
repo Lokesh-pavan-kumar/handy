@@ -23,12 +23,11 @@
 			 	<div class="sidebar-categories">
 			 		<div class="head">Browse Categories</div>
 			 			<ul class="main-categories">
-			 				<li class="main-nav-list">
-			 					<a href="/search/filter/home decor">Home Decor</a>
-			 				</li>
-			 				<li class="main-nav-list">
-			 					<a href="/search/filter/statues">Statues</a>
-			 				</li>			 				
+			 				{% for category in categories %}
+			 					<li class="main-nav-list">
+			 						<a href="/search/filter/{{category}}">{{category}}</a>
+			 					</li>
+			 				{% endfor %}		 				
 			 			</ul>
 			 	</div>
 			 </div>

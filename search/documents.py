@@ -22,5 +22,3 @@ class ProductDocument(Document):
 			'id', 'name', 'description', 'image', 'price'
 		]
 
-
-
