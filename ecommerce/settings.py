@@ -45,7 +45,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'handy.apps.HandyConfig',
+    'search',
+    'django_elasticsearch_dsl',
 ]
+
+ELASTICSEARCH_DSL={
+    'default': {
+        'hosts': 'localhost:9200'
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -138,5 +146,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'jagruthi.d18@iiits.in'
-EMAIL_HOST_PASSWORD = 'upsvuscvjgljqbwt'
+EMAIL_HOST_PASSWORD = 'vyyeyxxeyiqsdfxx'
 EMAIL_PORT = 587

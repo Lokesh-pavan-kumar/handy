@@ -6,6 +6,7 @@ from django.contrib.auth import views as auth_views
 from accounts.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from search import views as search_views
 
 
 urlpatterns = [
@@ -40,4 +41,6 @@ urlpatterns = [
          name='password_change_done'),
     url('ratings/', include('star_ratings.urls', namespace='ratings')),
     path('changeprofilepicture/', changeprofilepic_view, name='profile_picture'),
+    path('search/', search_views.search),
+    path('filter/<str:category>', search_views.filter)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

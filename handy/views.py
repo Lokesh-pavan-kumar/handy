@@ -4,9 +4,12 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth.models import User
 from django.contrib import sessions
 from django.contrib.auth.decorators import login_required
+from search import views as search_views
 
 def home(request):
-    # request.session['del']=0
+    if request.GET:
+        return search_views.search(request)
+
     products = {
         'thumbnails': Product.objects.all(),
         'category': Category.objects.all()
