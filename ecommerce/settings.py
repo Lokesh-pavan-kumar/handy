@@ -45,11 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'handy.apps.HandyConfig',
-    'search',
-    'django_elasticsearch_dsl',
+    # 'search',
+    # 'django_elasticsearch_dsl',
 ]
 
-ELASTICSEARCH_DSL={
+ELASTICSEARCH_DSL = {
     'default': {
         'hosts': 'localhost:9200'
     },

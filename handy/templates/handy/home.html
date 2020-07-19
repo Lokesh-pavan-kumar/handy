@@ -1,52 +1,263 @@
-{% extends 'handy/base.html' %}
-{% block content %}
+{% extends 'handy/base.html' %} {% block content %}
 
-	<div class="mb-5" id="design">
-
+<section class="banner-area">
+	<div class="container" style="max-width: 1100px;">
+		<div class="col-lg-12">
+			<div class="row fullscreen align-items-center justify-content-start">
+				<div class="active-banner-slider owl-carousel">
+					{% for thumb in thumbnails %} {% if thumb.isfeatured %}
+					<!-- single-slide -->
+					<div class="row single-slide align-items-center d-flex">
+						<div class="col-lg-5 col-md-6">
+							<div class="banner-content">
+								<h1>{{thumb.name}}</h1>
+								<p>{{thumb.description}}</p>
+								<div class="add-bag d-flex align-items-center">
+									<a class="add-btn" href="/cart/{{ thumb.pk }}"
+										><span class="lnr lnr-cross"></span
+									></a>
+									<span class="add-text text-uppercase">Add to Cart</span>
+								</div>
+								<div class="add-bag d-flex align-items-center">
+									<a class="add-btn" href="/wishlist/{{ thumb.pk }}"
+										><span class="lnr lnr-cross"></span
+									></a>
+									<span class="add-text text-uppercase">Add to Bag</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="banner-img">
+								<img
+									class="img-resposive"
+									src="{{thumb.image.url}}"
+									alt=""
+									height="450px"
+								/>
+							</div>
+						</div>
+					</div>
+					{% endif %} {% endfor %}
+					<!-- single-slide -->
+				</div>
+			</div>
+		</div>
 	</div>
-
+</section>
+<div class="single-product-slider" style="margin: 50px;">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-lg-6 text-center">
 				<div class="section-title">
-					<h1>Handpicked Handicrafts</h1>
+					<h1>Latest Products</h1>
+					<p>Collection of our most recently added handicrafts</p>
 				</div>
-
 			</div>
 		</div>
+	</div>
+</div>
 
-		<div class="row">
-		{% for thumb in thumbnails %}
-			<div class="col-lg-3 col-md-6">
-				<div class="single-product">
-				   <div class="">
-						<a href="/product/{{ thumb.pk }}">
-							<img class="img-responsive" src="{{ thumb.image.url }}" alt="" height="300px" width="500px">
-						</a>
+<div class="container" style="margin-top: 10px; max-width: none;">
+	<div class="row">
+		{% for thumb in latest %}
+		<div class="col-lg-3 col-md-6">
+			<div class="single-product" style="margin: 20px;">
+				<div class="">
+					<a href="/product/{{ thumb.pk }}">
+						<img
+							class="img-responsive"
+							src="{{ thumb.image.url }}"
+							alt=""
+							height="300px"
+							width="500px"
+						/>
+					</a>
 
-						<div class="product-details">
-							<div class="producttitle">
-								<h6>{{ thumb.name }}</h6>
-							</div>
-							<div class="price">
-									<h6>${{ thumb.price }}</h6>
-							</div>
-							<div class="prd-bottom">
-								<a href="/cart/{{ thumb.pk }}" class="social-info">
-									<span class="ti-bag"></span>
-									<p class="hover-text">to cart</p>
-								</a>
-								<a href="/wishlist/{{ thumb.pk }}" class="social-info">
-									<span class="lnr lnr-heart"></span>
-									<p class="hover-text">Wishlist</p>
-								</a>
-							</div>
+					<div class="product-details">
+						<div class="producttitle">
+							<h6>{{ thumb.name }}</h6>
 						</div>
-		        	</div>
-			 	</div>
-	 		</div>
+						<div class="price">
+							<h6>${{ thumb.price }}</h6>
+						</div>
+						<div class="prd-bottom">
+							<a href="/cart/{{ thumb.pk }}" class="social-info">
+								<span class="ti-bag"></span>
+								<p class="hover-text">to cart</p>
+							</a>
+							<a href="/wishlist/{{ thumb.pk }}" class="social-info">
+								<span class="lnr lnr-heart"></span>
+								<p class="hover-text">Wishlist</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		{% endfor %}
+	</div>
+</div>
+
+<div class="single-product-slider" style="margin: 50px;">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-6 text-center">
+				<div class="section-title">
+					<h1>
+						-------------------
+					</h1>
+				</div>
+			</div>
 		</div>
 	</div>
+</div>
+
+<section class="category-area">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8 col-md-12">
+				<div class="row">
+					<div class="col-lg-8 col-md-8">
+						<div class="single-deal">
+							<div class="overlay"></div>
+							<img
+								class="img-fluid w-100"
+								src="{{ category0.image.url }}"
+								alt=""
+								height="458"
+								width="184"
+							/>
+							<a href="img/category/c1.jpg" class="img-pop-up" target="_blank">
+								<div class="deal-details">
+									<h6 class="deal-title">{{ category0.category }}</h6>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4">
+						<div class="single-deal">
+							<div class="overlay"></div>
+							<img
+								class="img-fluid w-100"
+								src="{{ category1.image.url }}"
+								alt=""
+								height="262px"
+								width="225px"
+							/>
+							<a href="img/category/c2.jpg" class="img-pop-up" target="_blank">
+								<div class="deal-details">
+									<h6 class="deal-title">{{ category1.category }}</h6>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4">
+						<div class="single-deal">
+							<div class="overlay"></div>
+							<img
+								class="img-fluid w-100"
+								src="{{ category3.image.url }}"
+								alt=""
+								height="262px"
+								width="225px"
+							/>
+							<a href="img/category/c3.jpg" class="img-pop-up" target="_blank">
+								<div class="deal-details">
+									<h6 class="deal-title">{{ category3.category }}</h6>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-8 col-md-8">
+						<div class="single-deal">
+							<div class="overlay"></div>
+							<img
+								class="img-fluid w-100"
+								src="{{ category2.image.url }}"
+								alt=""
+								height="458px"
+								width="184px"
+							/>
+							<a href="img/category/c4.jpg" class="img-pop-up" target="_blank">
+								<div class="deal-details">
+									<h6 class="deal-title">{{ category2.category }}</h6>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="single-deal">
+					<div class="overlay"></div>
+					<img
+						class="img-fluid w-100"
+						src="{{ category4.image.url }}"
+						alt=""
+						height="360px"
+						width="125px"
+					/>
+					<a href="img/category/c5.jpg" class="img-pop-up" target="_blank">
+						<div class="deal-details">
+							<h6 class="deal-title">{{ category4.category }}</h6>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="single-product-slider" style="margin: 50px;">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-6 text-center">
+				<div class="section-title">
+					<h1>
+						-------------------
+					</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="single-product-slider" style="margin: 50px;">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-6 text-center">
+				<div class="section-title">
+					<h1>Explore Artisans</h1>
+					<p>
+						Wanna know more about your favourite Artisan? <br />
+						Say no more...
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container" style="margin-top: 10px; max-width: none;">
+	<div class="row">
+		{% for object in artisans %}
+		<a href="/artisan/{{ object.pk }}">
+			<div class="flip-card">
+				<div class="flip-card-inner">
+					<div class="flip-card-front">
+						<h1>{{ object.name }}</h1>
+						<p>{{ object.birthday }}</p>
+					</div>
+					<div class="flip-card-back">
+						<p>{{ object.contact }}</p>
+						<br /><br />
+						<p>{{ object.address }}</p>
+					</div>
+				</div>
+			</div>
+		</a>
+		{% endfor %}
+	</div>
+</div>
 
 {% endblock content %}

@@ -4,6 +4,7 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
 from accounts.views import *
+from accounts.views import complete_signupview
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -30,6 +31,7 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(
              template_name='accounts/password_reset_complete.html'),
          name='password_reset_complete'),
+    path('complete_signup/', complete_signupview, name='complete_signup'),
     path('dashboard/', dashboard_view, name='dashboard'),
     path('settings/', settings_view, name='settings'),
     path('password_change', auth_views.PasswordChangeView.as_view(

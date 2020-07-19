@@ -38,7 +38,7 @@ def activate(request, uidb64, token):
         user.profile.signup_confirmation = True
         user.save()
         login(request, user)
-        return redirect('handy-home')
+        return redirect('complete_signup')
     else:
         return render(request, 'accounts/activation_invalid.html')
 
@@ -88,18 +88,31 @@ def user_view(request):
 def settings_view(request):
     if request.method == 'POST':
         p_form = ChangeNameForm(request.POST, instance=request.user.profile)
-        u_form = ChangeUserForm(instance=request.user)
         if p_form.is_valid():
-            # u_form.save()
             p_form.save()
             return redirect('dashboard')
         else:
             print('Form Invalid')
-            return render(request, 'accounts/settings.html', {'u_form': u_form, 'p_form': p_form})
+            return render(request, 'accounts/settings.html', {'p_form': p_form})
     else:
         p_form = ChangeNameForm(instance=request.user.profile)
-        u_form = ChangeUserForm(instance=request.user)
-        return render(request, 'accounts/settings.html', {'u_form': u_form, 'p_form': p_form})
+        return render(request, 'accounts/settings.html', {'p_form': p_form})
+
+
+@login_required(login_url='login')
+def complete_signupview(request):
+    if request.method == 'POST':
+        a_form = AddAddressForm(
+            request.POST, instance=request.user.profile)
+        if a_form.is_valid():
+            a_form.save()
+            return redirect('/')
+        else:
+            print('Form Invalid')
+            return render(request, 'accounts/complete_signup.html', {'a_form': a_form})
+    else:
+        a_form = AddAddressForm(instance=request.user.profile)
+        return render(request, 'accounts/complete_signup.html', {'a_form': a_form})
 
 
 @login_required(login_url='login')
@@ -119,67 +132,3 @@ def changeprofilepic_view(request):
 
     form = ProfilePictureFrom()
     return render(request, 'accounts/profilepic.html', {'form': form})
-
-# @login_required(login_url='login')
-# def dashboard_view(request):
-#     return render(request, 'accounts/dashboard.html')
-
-
-# def user_view(request):
-#     user = request.user
-#     return HttpResponse(user)
-
-
-# @login_required(login_url='login')
-# def settings_view(request):
-#     return render(request, 'accounts/settings.html')
-
-
-# @login_required(login_url='login')
-# def changepassword_view(request):
-#     user = request.user
-#     print('password is ' + user.password)
-#     if request.method == 'POST':
-#         form = ChangePasswordForm(request.POST)
-#         if form.is_valid():
-#             form.verify_pass()
-#             form.verify_login(request)
-#             user.password = form.cleaned_data[newpass]
-#     else:
-#         form = ChangePasswordForm()
-#         return render(request, 'accounts/changepassword.html', {'form': form})
-
-
-# @login_required(login_url='login')
-# def changedetails_view(request):
-#     if request.method == 'POST':
-#         form = ChangeDetailsForm(request.POST)
-#         if form.is_valid():
-#             request.user.username = form.cleaned_data['UserName']
-#             request.user.first_name = form.cleaned_data['FirstName']
-#             request.user.last_name = form.cleaned_data['LastName']
-#     form = ChangeDetailsForm()
-#     return render(request, 'accounts/changedetails.html', {'form': form})
-
-
-# @login_required(login_url='login')
-# def changeprofilepic_view(request):
-#     file = open(
-#         'C:/Users/jagruthi/Downloads/handy-profiles/handy-profiles/users/accounts/static/accounts/images/nordicjpg.jpg')
-#     myfile = File(file)
-#     if request.method == 'POST':
-#         user = request.user
-#         form = ProfilePictureFrom(request.POST, request.FILES, instance=user)
-#         if form.is_valid():
-#             if not request.FILES.get('profile_pic', False):
-#                 print('No file')
-#                 request.user.profile.profile_pic.save('default.jpg', myfile)
-#                 return redirect('dashboard')
-#             else:
-#                 form.save(commit=False)
-#                 request.user.profile.profile_pic = request.FILES.get(
-#                     'profile_pic', False)
-#                 form.save()
-#                 return redirect('dashboard')
-#     form = ProfilePictureFrom()
-#     return render(request, 'accounts/ProfilePic.html', {'form': form})

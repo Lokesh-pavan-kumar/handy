@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile
+from django_countries import countries
 
 
 class SignUpForm(UserCreationForm):
@@ -42,6 +43,8 @@ class ChangeNameForm(forms.ModelForm):
 
     last_name = forms.CharField(label='Last Name', required=False,)
 
+    Country = forms.ChoiceField(choices=list(countries))
+
     class Meta:
         model = Profile
         fields = ['first_name', 'last_name', 'Door_flat',
@@ -66,3 +69,12 @@ class ProfilePictureFrom(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('profile_pic',)
+
+
+class AddAddressForm(forms.ModelForm):
+    Country = forms.ChoiceField(choices=list(countries))
+
+    class Meta:
+        model = Profile
+        fields = ['Door_flat',
+                  'Street', 'City', 'State', 'Country', 'Pincode']

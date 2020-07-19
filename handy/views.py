@@ -6,41 +6,58 @@ from django.contrib import sessions
 from django.contrib.auth.decorators import login_required
 from search import views as search_views
 from django.http import HttpResponseRedirect
+from datetime import date, timedelta
+
 
 def home(request):
     if request.GET:
         return search_views.search(request)
 
+    latest = []
+
+    for item in Product.objects.all():
+        if((date.today() -
+                item.date_posted.date()) < timedelta(days=10)):
+            latest.append(item)
+
     products = {
+        'latest': latest,
         'thumbnails': Product.objects.all(),
-        'category': Category.objects.all()
+        'category0': Category.objects.all()[0],
+        'category1': Category.objects.all()[1],
+        'category2': Category.objects.all()[2],
+        'category3': Category.objects.all()[3],
+        'category4': Category.objects.all()[4],
+        'artisans': Artisan.objects.all()
     }
     return render(request, 'handy/home.html', products)
+
 
 @login_required(login_url='login')
 def cart(request):
     y = Cart.objects.filter(use_name=request.user)
     t = 0
     for i in y:
-        t+=i.product.price
+        t += i.product.price
     items = {
-    'items':y,
-    'total':t
+        'items': y,
+        'total': t
     }
-    products= {
+    products = {
         'thumbnails': Product.objects.all(),
         'category': Category.objects.all()
     }
     return render(request, 'handy/store.html', items)
 
+
 @login_required(login_url='login')
-def cartview(request,pk):
+def cartview(request, pk):
     x = Product.objects.get(id=pk)
     z = Cart.objects.filter(use_name=request.user, product=x)
     print(len(z))
 
     if len(z) == 0:
-        c = Cart(product=x, use_name=request.user, quantity=1, active = True)
+        c = Cart(product=x, use_name=request.user, quantity=1, active=True)
         c.save()
     else:
         z = Cart.objects.get(use_name=request.user, product=x)
@@ -50,18 +67,19 @@ def cartview(request,pk):
     y = Cart.objects.filter(use_name=request.user)
     t = 0
     for i in y:
-        t+=((i.product.price)*(i.quantity))
+        t += ((i.product.price)*(i.quantity))
     print(t)
     items = {
-    'items':y,
-    'total':t
+        'items': y,
+        'total': t
     }
-    products= {
+    products = {
         'thumbnails': Product.objects.all(),
         'category': Category.objects.all()
     }
 
-    return render(request,'handy/store.html',items)
+    return render(request, 'handy/store.html', items)
+
 
 @login_required(login_url='login')
 def update_cartview(request):
@@ -73,17 +91,18 @@ def update_cartview(request):
     y = Cart.objects.filter(use_name=request.user, product=data['product'])
     t = 0
     for i in y:
-        t+=((i.product.price)*(i.quantity))
+        t += ((i.product.price)*(i.quantity))
     print(t)
     items = {
-    'items':y,
-    'total':t
+        'items': y,
+        'total': t
     }
 
-    return render(request,'handy/store.html',items)
+    return render(request, 'handy/store.html', items)
+
 
 @login_required(login_url='login')
-def del_cartview(request,pk):
+def del_cartview(request, pk):
     x = Product.objects.get(id=pk)
     z = Cart.objects.filter(use_name=request.user, product=x)
     z.delete()
@@ -91,17 +110,19 @@ def del_cartview(request,pk):
     print(y)
     t = 0
     for i in y:
-        t+=((i.product.price)*(i.quantity))
+        t += ((i.product.price)*(i.quantity))
     print(t)
     items = {
-    'items':y,
-    'total':t
+        'items': y,
+        'total': t
     }
     # request.session['del']=1
-    return render(request,'handy/store.html',items)
+    return render(request, 'handy/store.html', items)
+
 
 class ProductDetailView(DetailView):
     model = Product
+
 
 class ArtisanDetailView(DetailView):
     model = Artisan

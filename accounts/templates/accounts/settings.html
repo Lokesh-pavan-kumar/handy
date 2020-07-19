@@ -47,12 +47,11 @@
         <form method="POST">
             <legend>Update Details</legend>
             {% csrf_token %}
-            {% comment %} {{u_form|crispy}} {% endcomment %}
             {{p_form|crispy}}
+            <button type="submit" class="btn btn-dark">Make Changes</button>
             <a class="change-password" href="{% url 'password_change' %}">
-                <button type="button">Change Password</button>
+                <button type="button" class="btn btn-dark">Change Password</button>
             </a>
-            <button type="submit">Make Changes</button>
         </form>
     </div>
 </section>

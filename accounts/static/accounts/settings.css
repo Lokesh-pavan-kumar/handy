@@ -1,153 +1,156 @@
 html {
-    max-height: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
+	max-height: 100%;
+	overflow-x: hidden;
+	overflow-y: scroll;
 }
 
 body {
-    background-color: black;
+	background-color: black;
 }
 
 div {
-    /* border: 1px black solid;
+	/* border: 1px black solid;
     overflow-y: scroll; */
 }
 
 .content-section {
-    background-color: whitesmoke;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 80px;
-    padding-left: 50px;
-    margin-right: 80px;
-    block-size: 800px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+	background-color: whitesmoke;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: 80px;
+	padding-left: 50px;
+	margin-right: 80px;
+	block-size: 800px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 .links {
-    margin: 5px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+	margin: 5px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
 }
 
 .form {
-    margin: 5px;
-    padding-top: 100px;
-    flex: 1;
-    color: black;
-    font-weight: bolder;
+	margin: 5px;
+	padding-top: 100px;
+	flex: 1;
+	color: black;
+	font-weight: bolder;
 }
 
-.div1{
-    flex: 1;
-    padding-left: 180px;
-    padding-top: 250px;
+.div1 {
+	flex: 1;
+	padding-left: 180px;
+	padding-top: 250px;
 }
-
 
 .pic {
-    border-radius: 50%;
-    overflow: hidden;   
+	border-radius: 50%;
+	overflow: hidden;
 }
 
 .example {
-    position:relative;
-    padding:0;
-    width:300px;
-    display:block;
-    cursor:pointer;
-    overflow:hidden;
+	position: relative;
+	padding: 0;
+	width: 300px;
+	display: block;
+	cursor: pointer;
+	overflow: hidden;
 }
 
 .content {
-    opacity:0;
-    font-size: 20px;
-    position:absolute;
-    top:-150px;
-    left:0px;
-    color:black;
-    background-color:whitesmoke;
-    width:250px;
-    height:400px;
-    -webkit-transition: all 400ms ease-out;
-    -moz-transition: all 400ms ease-out;
-    -o-transition: all 400ms ease-out;
-    -ms-transition: all 400ms ease-out;
-    transition: all 400ms ease-out;
-    text-align:center;
+	opacity: 0;
+	font-size: 20px;
+	position: absolute;
+	top: -150px;
+	left: 0px;
+	color: black;
+	background-color: whitesmoke;
+	width: 250px;
+	height: 400px;
+	-webkit-transition: all 400ms ease-out;
+	-moz-transition: all 400ms ease-out;
+	-o-transition: all 400ms ease-out;
+	-ms-transition: all 400ms ease-out;
+	transition: all 400ms ease-out;
+	text-align: center;
 }
 
-.example .content:hover { 
-    opacity:0.8; 
+.example .content:hover {
+	opacity: 0.8;
 }
 
 .example .content .text {
-    height:0;
-    opacity:1;
-    transition-delay: 0s;
-    /* transition-duration: 0.4s; */
+	height: 0;
+	opacity: 1;
+	transition-delay: 0s;
+	/* transition-duration: 0.4s; */
 }
 
 .example .content:hover .text {
-    opacity:1;
-    transform: translateY(250px);
-    -webkit-transform: translateY(250px);
+	opacity: 1;
+	transform: translateY(250px);
+	-webkit-transform: translateY(250px);
 }
 
 .change-password {
-    color: black;
-    margin-right: 10px; 
+	color: black;
+	margin-right: 10px;
 }
 
 #div_id_Pincode {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
-ul{
-    max-height: 500%;
-    overflow-y: scroll;
+ul {
+	max-height: 500%;
+	overflow-y: scroll;
 }
 
-#div_id_Pincode::before { 
-    content: "\A\A"; 
-    white-space: pre; 
-} 
+#div_id_Pincode::before {
+	content: "\A\A";
+	white-space: pre;
+}
 
 .change-password:hover {
-    color: yellowgreen;
+	color: yellowgreen;
 }
 
 .control-group {
-    margin-bottom: 10px;
-    transition-delay: 10s;
-    /* background-color: red; */
+	margin-bottom: 10px;
+	transition-delay: 10s;
+	/* background-color: red; */
 }
 
 .textinput {
-    width: 250px;
+	width: 250px;
 	transition: all 0.2s ease-in-out;
 }
 
 .textinput:focus {
-    width: 350px;
+	width: 350px;
 }
 
 .nice-select {
-    font-weight: lighter;
-    border-radius: 0%;
-    border: 1.5px #888888 solid;
-    font-size: small;
-    display: block;
-    max-height: 500%;
+	font-weight: lighter;
+	border-radius: 0%;
+	border: 1.5px #888888 solid;
+	font-size: small;
+	display: block;
+	max-height: 500%;
 }
 
-.nice-select::after { 
-    content: "\A"; 
-    white-space: pre; 
-} 
+.nice-select .list {
+	overflow: scroll;
+}
 
-@media screen and (max-width:1355px) {
+.nice-select::after {
+	content: "\A";
+	white-space: pre;
+}
+
+@media screen and (max-width: 1355px) {
 }

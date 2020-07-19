@@ -1,0 +1,88 @@
+html {
+	max-height: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	background-color: black;
+}
+
+section.form {
+	background-color: whitesmoke;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: 80px;
+	padding-left: 50px;
+	margin-right: 80px;
+	block-size: 800px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.form {
+	margin: 5px;
+	padding: 100px;
+	flex: 1;
+	color: black;
+	font-weight: bolder;
+}
+
+.content {
+	opacity: 0;
+	font-size: 20px;
+	position: absolute;
+	top: -150px;
+	left: 0px;
+	color: black;
+	background-color: whitesmoke;
+	width: 250px;
+	height: 400px;
+	-webkit-transition: all 400ms ease-out;
+	-moz-transition: all 400ms ease-out;
+	-o-transition: all 400ms ease-out;
+	-ms-transition: all 400ms ease-out;
+	transition: all 400ms ease-out;
+	text-align: center;
+}
+
+#div_id_Pincode {
+	margin-bottom: 20px;
+}
+
+ul {
+	max-height: 500%;
+	overflow-y: scroll;
+}
+
+#div_id_Pincode::before {
+	content: "\A\A";
+	white-space: pre;
+}
+
+.textinput {
+	width: 250px;
+	transition: all 0.2s ease-in-out;
+}
+
+.textinput:focus {
+	width: 350px;
+}
+
+.nice-select {
+	font-weight: lighter;
+	border-radius: 0%;
+	border: 1.5px #888888 solid;
+	font-size: small;
+	display: block;
+	max-height: 500%;
+}
+
+.nice-select .list {
+	overflow: scroll;
+}
+
+.nice-select::after {
+	content: "\A";
+	white-space: pre;
+}

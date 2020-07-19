@@ -1,0 +1,47 @@
+{% extends "handy/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/add_address.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.lazyselect').select2();
+        });
+    </script>
+</head>
+
+<section class="organic-breadcrumb" id="productpage_header">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Complete Signup</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="{% url 'handy-home' %}">Home &emsp;</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="form">
+    <div class="form">
+        <form method="POST">
+            <legend>Complete Your Signup process</legend>
+            {% csrf_token %}
+            {{a_form|crispy}}
+            <button type="submit" class="btn btn-dark">Save Address</button>
+            <a class="btn btn-dark" href="{% url 'dashboard' %}">
+                Skip
+            </a>
+        </form>
+    </div>
+</section>
+
+
+{% endblock content %}
