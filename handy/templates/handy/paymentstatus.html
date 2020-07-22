@@ -1,0 +1,14 @@
+{% extends 'handy/base.html' %}
+{% block title %} Payment Status {% endblock %}
+{% block content %}
+    <div class="container" style="margin-top: 150px">
+    <div class="col my-4">
+        <h2>Payment Status Regarding Your Order ID {{ response.ORDERID }}</h2>
+        {% if response.RESPCODE == '01' %}
+            ORDER SUCCESS
+        {% else %}
+            ORDER FAILURE
+        {% endif %}
+    </div>
+    </div>
+{% endblock %}

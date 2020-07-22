@@ -1,0 +1,99 @@
+{% extends 'handy/base.html' %} {% load static %} {% block content %}
+
+<head>
+	{% load static %}
+	<link
+		rel="stylesheet"
+		type="text/css"
+		href="{% static 'accounts/settings.css' %}"
+	/>
+	<link
+		href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css"
+		rel="stylesheet"
+	/>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$(".lazyselect").select2();
+		});
+	</script>
+</head>
+
+<section class="organic-breadcrumb" id="productpage_header">
+	<div class="container">
+		<div
+			class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
+		>
+			<div class="col-first">
+				<h1>Your Orders</h1>
+				<nav class="d-flex align-items-center">
+					<a href="{% url 'handy-home' %}">Home &emsp;</a>
+					<a href="{% url 'logout' %}">Logout</a>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="container" style="background-color: #111111;padding-top: 50px;">
+	<div class="row row-content">
+		<div class="col-12">
+			<h2 style="color: white;padding-bottom: 20px;">Your Orders</h2>
+
+			<div id="accordion">
+				{% for order in orders %}
+				<div class="card">
+					<a data-toggle="collapse" data-target="#{{ order.product }}">
+						<div class="card-header" style="background-color: #222222;">
+							<h3>
+								{{ order.product }}
+							</h3>
+						</div>
+					</a>
+					<div
+						role="tabpanel"
+						class="collapse"
+						id="{{ order.product }}"
+						data-parent="#accordion"
+						style="background-color: #222222;"
+					>
+						<div class="card-body">
+							<p class="d-none d-sm-block">
+								<div class="col-sm">
+                                    <div class="card">
+                                        <h3 class="card-header bg-primary text-white">Ordered on {{ order.date_ordered }}</h3>
+                
+                                        <div class="card-body">
+                                            <dl class="row">
+                                                <dt class="col-6">Product Name</dt>
+                                                <dd class="col-6"><a href="/product/{{order.product.pk}}">{{order.product}}</a></dd>
+                                                <dt class="col-6">Date Ordered</dt>
+                                                <dd class="col-6">{{ order.date_ordered}}</dd>
+                                                <dt class="col-6">Price</dt>
+                                                <dd class="col-6">${{order.net_price}}</dd>
+                                                <dt class="col-6">name</dt>
+                                                <dd class="col-6">{{order.name}}</dd>
+                                                <dt class="col-6">email</dt>
+                                                <dd class="col-6">{{order.email}}</dd>
+                                                <dt class="col-6">address</dt>
+                                                <dd class="col-6">{{order.address}},{{order.city}},{{order.state}}</dd>
+                                                <dt class="col-6">zip_code</dt>
+                                                <dd class="col-6">{{order.zip_code}}</dd>
+                                                <dt class="col-6">phone</dt>
+                                                <dd class="col-6">{{order.phone}}</dd>
+                                                <dt class="col-6">Delivery Status</dt>
+                                                <dd class="col-6">{{order.order_status}}</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+							</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

@@ -63,7 +63,7 @@ def signup_view(request):
             message = render_to_string('accounts/activation_request.html', {
                 'user': user,
                 'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
                 # method will generate a hash value with user related data
                 'token': account_activation_token.make_token(user),
             })

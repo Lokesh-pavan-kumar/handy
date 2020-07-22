@@ -49,12 +49,22 @@ class Product(models.Model):
     description = models.TextField()
     availability = models.BooleanField(default=False)
     isfeatured = models.BooleanField(default=False)
+    stock = models.IntegerField(default=0)
+    ratings = models.FloatField(default=0)
+    no_of_users = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
 
     class Meta:
         unique_together = (('artisan_id', 'category', 'name'),)
+
+
+class ratings(models.Model):
+    user = models.CharField(max_length=100)
+    ratings = models.FloatField(default=0)
+    product_id = models.IntegerField(default=0)
+    reviews = models.TextField(default="")
 
 
 class Cart(models.Model):

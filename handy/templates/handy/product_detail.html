@@ -2,6 +2,52 @@
 {% extends 'handy/base.html' %}
 {% load ratings %}
 {% block content %}
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+
+	<style>
+	.slidecontainer {
+	  width: 100%;
+	}
+
+	.slider {
+	  -webkit-appearance: none;
+	  width: 100%;
+	  height: 50px;
+	  background: #828bb2;
+	  outline: none;
+	  opacity: 0.7;
+	  -webkit-transition: .2s;
+	  transition: opacity .2s;
+	}
+
+	.slider:hover {
+	  opacity: 1;
+	}
+
+	.slider::-webkit-slider-thumb {
+	  -webkit-appearance: none;
+	  appearance: none;
+	  width: 25px;
+	  height: 25px;
+	  background: orange;
+	  cursor: pointer;
+	}
+
+	.slider::-moz-range-thumb {
+	  width: 25px;
+	  height: 25px;
+	  background: #828bb2;
+	  cursor: pointer;
+	}
+	</style>
+
+</head>
+<body onload="loading({{object.id}})">
 
 	<section class="organic-breadcrumb" id="productpage_header">
 		<div class="container">
@@ -32,15 +78,40 @@
 							<img class="img-fluid" src="{{ object.image.url }}" alt="">
 						</div>
 					</div>
-				</div>
+
+					<div class="slidecontainer">
+						<h4> Rating </h4>
+					  <input id="range" onmouseout="change({{object.artisan_id.pk}},'{{ object.name }}',{{object.id}},{{object.no_of_users}},{{object.ratings}})" type="range" min="1" max="50">
+					  <p id="demo"> </p>
+					</div>
+					<div>
+						<h4> Review </h4>
+						<input id="reviews" onchange="change_review({{object.id}})" type="textarea" name="name" rows="8" cols="80" style="width:70%">
+						<p id="demo"> </p>
+					</div>
+
+				 </div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<h3>{{ object.name }}</h3>
+						<h3>{{ object.name }} </h3>
+							<h4 id='rati'>{{object.ratings}}  </h4>
+						<h6>
+							{% if  object.stock > 0 %}
+								{% if object.stock <= 5 %}
+									<span style = "color:orange; font-size: 16px" >Only a Few left!</span>
+								{% else %}
+									<span style = "color:green; font-size: 16px">In stock</span>
+								{% endif %}
+							{% else %}
+								<span style = "color:red; font-size: 16px">Currently unavailable</span>
+							{% endif %}
+						</h6>
+
 						<h2>${{ object.price }}</h2>
 						<ul class="list">
 							<li><a class="active" href="/artisan/{{ object.artisan_id.pk }}"><span>Artisan</span> : {{ object.artisan_id.name }}</a></li>
 							<li><a href="#"><span>Category</span> : {{ object.category.category }}</a></li>
-							<li><a href="#"><span>Availibility</span> : {{ object.availability }}</a></li>
+
 						</ul>
 						<p>{{ object.description|linebreaksbr }}</p>
 					</div>
@@ -61,6 +132,131 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="main">
+
+		</div>
+
+	<script>
+	var slider = document.getElementById("range");
+	var output = document.getElementById("demo");
+	output.innerHTML = (slider.value/10);
+
+	slider.oninput = function() {
+	  output.innerHTML = (this.value/10);
+	}
+
+	</script>
+
+
+<script>
+	function change_review(r){
+		console.log(r)
+		// console.log(p)
+		// console.log(q)
+		// console.log(s)
+		// console.log(t)
+		var review = document.getElementById("reviews").value;
+		// var update_slider = (slider.value/10);
+		console.log(review)
+		$.ajax({
+						type: 'POST',
+						url: '{% url "update_review" %}',
+						data: { 'value': review,
+										'product': r,
+										csrfmiddlewaretoken: '{{ csrf_token }}'
+					 },
+						dataType: 'json',
+						success: function(data) {
+							console.log(data);
+							console.log('aaaaaa')
+						},
+						error: console.log('aa')
+				});
+		// document.getElementById("rati").innerHTML='ratings: '+;
+
+
+	}
+
+					function change(p,q,r,s,t){
+						console.log(r)
+						var slider = document.getElementById("range");
+						var update_slider = (slider.value/10);
+						$.ajax({
+										type: 'POST',
+										url: '{% url "update_rating" %}',
+										data: { 'value': update_slider,
+														'product': r,
+														'artisan_id':p,
+														'name': q,
+														csrfmiddlewaretoken: '{{ csrf_token }}'
+									 },
+										dataType: 'json',
+										success: function(data) {
+											console.log(data)
+										}
+								});
+						// document.getElementById("rati").innerHTML='ratings: '+;
+					}
+
+ 				var my = document.getElementById("rati").innerHTML;
+				my = parseFloat(my).toFixed(2);
+				document.getElementById("rati").innerHTML=my;
+
+				function loading(r){
+									console.log(r)
+									$.ajax({
+															type: 'GET',
+															url: "{% url 'get_reviews' %}",
+															data: {'product': r,
+																	csrfmiddlewaretoken: '{{ csrf_token }}'
+														},
+															dataType: 'json',
+															success: function (response) {
+																	// if not valid user, alert the user
+																	// console.log(response["valid"])
+																	if(response['valid']){
+																		document.getElementById("range").value=response['valid']*10;
+																		document.getElementById("demo").innerHTML=response['valid'];
+
+																	}
+																	console.log('a')
+																	console.log(response['user'])
+																	console.log('a')
+																	console.log(response['reviews'])
+																	var temp = 1;
+																	if(response['user']){
+																		console.log(response['user'])
+																	for(var i = 0; i< response['user'].length;i++){
+																		if(response['reviews'][i].length!=0)
+				{
+																		const new_div = document.createElement('div');
+																		new_div.id = temp;
+																		new_div.innerHTML = "<b>"+response['user'][i]+"</b> <br>"+response['reviews'][i]+"<br>";
+																		// new_div.style.float = 'left';
+																		new_div.style.width = '35%';
+																		new_div.style.border = 'solid';
+																		new_div.style.borderWidth = 'medium 30%';
+																		new_div.style.margin = '2% 2% 2% 2%';
+																		new_div.style.padding = '6px';
+																		$("#main").append(new_div);
+
+																		console.log(response['user'][i])
+				}
+																	}
+
+				}
+
+															},
+															error: function (response) {
+																	console.log(response)
+															}
+													})
+
+				}
+
+</script>
+</body>
+
+
 {% endblock content %}
-
-

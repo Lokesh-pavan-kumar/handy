@@ -1,9 +1,99 @@
-{% extends 'handy/base.html' %} {% block content %}
+{% extends 'handy/base.html' %} {% load static %} {% block content %}
+
+<div id="slides-shop" class="cover-slides">
+	<ul class="slides-container">
+		<li class="text-left">
+			<img src="{% static 'handy/images/banner-01.jpg' %}" alt="" />
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="m-b-20">
+							<strong>
+								HAND PICKED <br />
+								HANDICRAFTS</strong
+							>
+						</h1>
+						<p class="m-b-40">
+							Bringing the elegance of handmade products accessible to everyone.
+						</p>
+						<p>
+							<span style="background-color: orange;"
+								><a class="btn hvr-hover" href="#">Shop New</a></span
+							>
+						</p>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="text-center">
+			<img src="{% static 'handy/images/banner-02.jpg' %}" alt="" />
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="m-b-20">
+							<strong>
+								Want to gift something new? <br />
+								HANDICRAFTS is your answer</strong
+							>
+						</h1>
+						<p class="m-b-40">
+							Bringing the elegance of handmade products accessible to everyone.
+						</p>
+						<p><a class="btn hvr-hover" href="#">Shop New</a></p>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="text-right">
+			<img src="{% static 'handy/images/banner-03.jpg' %}" alt="" />
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="m-b-20">
+							<strong>
+								Be Unique <br />
+								Appreciate the ART</strong
+							>
+						</h1>
+						<p class="m-b-40">
+							Bringing the elegance of handmade products accessible to everyone.
+						</p>
+						<p><a class="btn hvr-hover" href="#">Shop New</a></p>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<div class="slides-navigation">
+		<a href="#" class="next"
+			><i class="fa fa-angle-right" aria-hidden="true"></i
+		></a>
+		<a href="#" class="prev"
+			><i class="fa fa-angle-left" aria-hidden="true"></i
+		></a>
+	</div>
+</div>
 
 <section class="banner-area">
-	<div class="container" style="max-width: 1100px;">
+	<div class="single-product-slider" style="padding: 20px; bottom: 100px;">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<div class="section-title">
+						<h1>Featured Products</h1>
+						<p>Hurry and grab them before they're gone...</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container" style="max-width: 1000px;">
 		<div class="col-lg-12">
-			<div class="row fullscreen align-items-center justify-content-start">
+			<div
+				class="row fullscreen align-items-center justify-content-start"
+				style="min-height: 80vh;"
+			>
 				<div class="active-banner-slider owl-carousel">
 					{% for thumb in thumbnails %} {% if thumb.isfeatured %}
 					<!-- single-slide -->
@@ -11,18 +101,25 @@
 						<div class="col-lg-5 col-md-6">
 							<div class="banner-content">
 								<h1>{{thumb.name}}</h1>
-								<p>{{thumb.description}}</p>
+								<h3>At just ${{thumb.price}}</h3>
+								<p>{{thumb.description}} <br /></p>
 								<div class="add-bag d-flex align-items-center">
 									<a class="add-btn" href="/cart/{{ thumb.pk }}"
 										><span class="lnr lnr-cross"></span
 									></a>
-									<span class="add-text text-uppercase">Add to Cart</span>
+									<span
+										class="add-text text-uppercase"
+										>Add to Cart</span
+									>
 								</div>
 								<div class="add-bag d-flex align-items-center">
 									<a class="add-btn" href="/wishlist/{{ thumb.pk }}"
 										><span class="lnr lnr-cross"></span
 									></a>
-									<span class="add-text text-uppercase">Add to Bag</span>
+									<span
+										class="add-text text-uppercase"
+										>Add to wishlist</span
+									>
 								</div>
 							</div>
 						</div>
@@ -75,10 +172,10 @@
 
 					<div class="product-details">
 						<div class="producttitle">
-							<h6>{{ thumb.name }}</h6>
+							<h6 style="">{{ thumb.name }}</h6>
 						</div>
 						<div class="price">
-							<h6>${{ thumb.price }}</h6>
+							<h6 style="">${{ thumb.price }}</h6>
 						</div>
 						<div class="prd-bottom">
 							<a href="/cart/{{ thumb.pk }}" class="social-info">
@@ -129,7 +226,9 @@
 							/>
 							<a href="img/category/c1.jpg" class="img-pop-up" target="_blank">
 								<div class="deal-details">
-									<h6 class="deal-title">{{ category0.category }}</h6>
+									<a href="/search/filter/{{ category0.category }}">
+										<h6 class="deal-title">{{ category0.category }}</h6>
+									</a>
 								</div>
 							</a>
 						</div>
@@ -146,7 +245,9 @@
 							/>
 							<a href="img/category/c2.jpg" class="img-pop-up" target="_blank">
 								<div class="deal-details">
-									<h6 class="deal-title">{{ category1.category }}</h6>
+									<a href="/search/filter/{{ category1.category }}">
+										<h6 class="deal-title">{{ category1.category }}</h6>
+									</a>
 								</div>
 							</a>
 						</div>
@@ -163,7 +264,9 @@
 							/>
 							<a href="img/category/c3.jpg" class="img-pop-up" target="_blank">
 								<div class="deal-details">
-									<h6 class="deal-title">{{ category3.category }}</h6>
+									<a href="/search/filter/{{ category3.category }}">
+										<h6 class="deal-title">{{ category3.category }}</h6>
+									</a>
 								</div>
 							</a>
 						</div>
@@ -180,7 +283,9 @@
 							/>
 							<a href="img/category/c4.jpg" class="img-pop-up" target="_blank">
 								<div class="deal-details">
-									<h6 class="deal-title">{{ category2.category }}</h6>
+									<a href="/search/filter/{{ category2.category }}">
+										<h6 class="deal-title">{{ category2.category }}</h6>
+									</a>
 								</div>
 							</a>
 						</div>
@@ -199,7 +304,9 @@
 					/>
 					<a href="img/category/c5.jpg" class="img-pop-up" target="_blank">
 						<div class="deal-details">
-							<h6 class="deal-title">{{ category4.category }}</h6>
+							<a href="/search/filter/{{ category4.category }}">
+								<h6 class="deal-title">{{ category4.category }}</h6>
+							</a>
 						</div>
 					</a>
 				</div>
@@ -239,23 +346,25 @@
 </div>
 
 <div class="container" style="margin-top: 10px; max-width: none;">
-	<div class="row">
+	<div class="row justify-content-center">
 		{% for object in artisans %}
-		<a href="/artisan/{{ object.pk }}">
-			<div class="flip-card">
-				<div class="flip-card-inner">
-					<div class="flip-card-front">
-						<h1>{{ object.name }}</h1>
-						<p>{{ object.birthday }}</p>
-					</div>
-					<div class="flip-card-back">
-						<p>{{ object.contact }}</p>
-						<br /><br />
-						<p>{{ object.address }}</p>
+		<div style="margin: 10px;">
+			<a href="/artisan/{{ object.pk }}">
+				<div class="flip-card" style="border: none;">
+					<div class="flip-card-inner">
+						<div class="flip-card-front">
+							<h1>{{ object.name }}</h1>
+							<p>{{ object.birthday }}</p>
+						</div>
+						<div class="flip-card-back">
+							<p>{{ object.contact }}</p>
+							<br /><br />
+							<p>{{ object.address }}</p>
+						</div>
 					</div>
 				</div>
-			</div>
-		</a>
+			</a>
+		</div>
 		{% endfor %}
 	</div>
 </div>

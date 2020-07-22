@@ -1208,7 +1208,6 @@ h1, h2, h3, h4, h5, h6 {
 /* banner area css
 ============================================================================================ */
 .banner-area {
-  background: url(/media/img/banner/banner-bg.jpg);
   background-size: cover;
   position: relative; }
   @media (max-width: 768px) {
@@ -1474,7 +1473,6 @@ h1, h2, h3, h4, h5, h6 {
     .active-product-area .owl-nav div:hover {
       opacity: 1; }
   .active-product-area .owl-nav .owl-next {
-    top: 100px;
     left: auto;
     right: 35%; }
     @media (max-width: 1440px) {

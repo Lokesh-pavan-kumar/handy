@@ -67,10 +67,11 @@
 
             <div class="cart-total">
                 <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">{{total}}</span>
+                <span class="cart-total-price">${{total}}</span>
             </div>
 
-            <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+{#            <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>#}
+                <a href='{% url 'checkout' %}'><button class="btn btn-primary" type="button">PURCHASE</button></a>
         </section>
 
          <script src="{% static 'handy/js/store.js' %}" async></script>
