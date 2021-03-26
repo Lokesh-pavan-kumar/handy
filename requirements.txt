@@ -124,7 +124,7 @@ python-gnupg==0.4.3
 pytz==2018.7
 pyxattr==0.6.0
 pyxdg==0.25
-PyYAML==3.12
+PyYAML==5.4
 pyzmq==18.1.1
 qrcode==6.0
 qrplatba==0.3.4
