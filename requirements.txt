@@ -105,7 +105,7 @@ PyChromecast==0.8.1
 pycrypto==2.6.1
 pycups==1.9.73
 pygame==1.9.6
-Pygments==2.5.2
+Pygments==2.7.4
 pygobject==3.26.1
 pyinotify==0.9.6
 PyInstaller==3.6
