@@ -9,7 +9,7 @@ backports.shutil-get-terminal-size==1.0.0
 bleach==3.1.1
 blinker==1.4
 Brlapi==0.6.6
-certifi==2018.1.18
+certifi==2022.12.7
 chardet==3.0.4
 Click==7.0
 click-plugins==1.1.1
